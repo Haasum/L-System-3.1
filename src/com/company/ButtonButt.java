@@ -1,11 +1,8 @@
-package com.company;
+/*package com.company;
 
 import javax.swing.*;
 import java.awt.geom.AffineTransform;
 
-/**
- * Created by MasterWillis on 04/12/2016.
- */
 public class ButtonButt extends JButton{
     AffineTransform t;
     private int x = 100;
@@ -35,3 +32,4 @@ public class ButtonButt extends JButton{
         this.y = y;
     }
 }
+*/

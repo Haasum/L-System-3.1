@@ -3,9 +3,6 @@ package com.company;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by MasterWillis on 04/12/2016.
- */
 
 public class ButtonExpandListener implements ActionListener{
 
@@ -26,9 +23,6 @@ public class ButtonExpandListener implements ActionListener{
         System.out.println(expandedTree);
 
         String currTree = lsys.getTree();
-        //System.out.println("jeg skal expandes"+currTree);
-
-
         String newTree1 = currTree.substring(0,i);
         String newTree2 = expandedTree;
         String newTree3 = currTree.substring(i+1,currTree.length());
@@ -53,23 +47,11 @@ public class ButtonExpandListener implements ActionListener{
         *
         * */
 
-
-      //  System.out.println("jeg er del 1"+newTree1);
-      //  System.out.println("jeg er del 2"+newTree2);
-      //  System.out.println("jeg er del 3"+newTree3);
-      //  System.out.println("Dette er mit bogstav: "+c);
-      //  System.out.println("Dette er min placering: "+i);
-
-
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Clicked");
         expandNodeInTree();
-
-
     }
 
 }
