@@ -24,7 +24,7 @@ public class Grammatik {
     private void addAxiom() {
 
         char axiom = 'K';
-        String axiomRule = "K[+A][-A]";
+        String axiomRule = "F[-A][+A]";
         Rule axRule = new Rule(axiom, axiomRule);
         ruleset.add(axRule);
 

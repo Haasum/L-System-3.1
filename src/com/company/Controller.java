@@ -14,7 +14,6 @@ public class Controller {
 
 
         // Listeners:
-
         ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsys);
 /*
 TODO: følgende er det der kalder leapListener. udkommenteret i denne version

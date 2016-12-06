@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.company.StaticView.screenSize;
 import static com.company.Texture.*;
@@ -18,6 +20,12 @@ public class Turtle extends JPanel{
     RecursiveLsys lsys;
     Graphics2D g2d;
     Texture texture;
+
+
+
+    ExpandNodeMouseListener expandNodeMouseListener;
+    private Map<NonTerminal,Point> testHashMap;
+
 
     static int screenWidth = (int) screenSize.getWidth();
     static int middleX = screenWidth/2;
@@ -34,11 +42,20 @@ public class Turtle extends JPanel{
         this.lsys = lsys;
         System.out.println("Jeg er træet, der tegnes: "+lsys.getTree());
         makeButtons();
+        makeMouseListener();
+        testHashMap = new HashMap<>();
 
     }
 
+    private void makeMouseListener() {
+     expandNodeMouseListener = new ExpandNodeMouseListener(this);
+    }
 
-    public void getAs(){
+
+
+
+
+    public void getNonTerminals(){
         for (int i = 0; i < lsys.getTree().length(); i++) {
             char currentCheck = lsys.getTree().charAt(i);
             if(currentCheck == 'A'){
@@ -51,8 +68,7 @@ public class Turtle extends JPanel{
 
     @Override
     public void paintComponent(Graphics g) {
-
-        buttonList = new ArrayList<JButton>();
+        testHashMap.clear();
         super.paintComponent(g);
         g2d = (Graphics2D) g.create();
         makeBackground(g2d);
@@ -70,7 +86,9 @@ public class Turtle extends JPanel{
                     makeLog(g2d);
                     break;
                 case 'A':
-                    interpretNonTerminal(g2d, i,  currentCheck);
+                    nonTerminal(g2d);
+
+               //     interpretNonTerminal(g2d, i,  currentCheck);
                     break;
                 case '+':
                     rotateRight(g2d);
@@ -93,6 +111,16 @@ public class Turtle extends JPanel{
         requestFocus();
     }
 
+    private void nonTerminal(Graphics2D g2d) {
+        AffineTransform tf = g2d.getTransform();
+        NonTerminal nt = new NonTerminal(g2d, tf);
+        testHashMap.put(nt, nt.getP());
+        setTestHashMap(testHashMap);
+
+
+
+    }
+
     private void interpretNonTerminal(Graphics2D g2d, int i, char a) {
 
         AffineTransform curTf = g2d.getTransform();
@@ -105,7 +133,6 @@ public class Turtle extends JPanel{
 
         but.setBounds(x,y,10,10);
         add(but);
-
     }
 
     private void push(Graphics2D g2d) {
@@ -125,6 +152,7 @@ public class Turtle extends JPanel{
         g2d.translate(0,BRANCH_HEIGHT);
        // drawLeafs(g2d); //draw Leafs bliver ikke kaldt i denne version, da vi skal rette nogle ting
     }
+
     private void drawLeafs(Graphics2D g2d) {
         //TODO: skal være object der får xpos og ypos for leaf ind. klasse til det er lavet ("Leaf")
         g2d.drawImage(leafImg, 0,-38,this);
@@ -136,14 +164,13 @@ public class Turtle extends JPanel{
         g2d.drawImage(leafHigh,-15,BRANCH_HEIGHT-4,this);
 
     }
-
-
     private void rotateLeft(Graphics2D g2d) {
         g2d.rotate(Math.PI/6);
     }
     private void rotateRight(Graphics2D g2d) {
         g2d.rotate(-Math.PI/6);
     }
+
     private void makeLog(Graphics2D g2d) {
         GeneralPath logShape = new GeneralPath();
         final double points[][]= {
@@ -168,6 +195,7 @@ public class Turtle extends JPanel{
         leafbuttonGrow.setBackground(Color.green);
         leafbuttonGrow.setSize(50, 50);
         this.add(leafbuttonGrow);
+
         leafbuttonGrow.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -194,6 +222,15 @@ public class Turtle extends JPanel{
         turtle.setPaint(Texture.soilTex); //sets the soil texture
         turtle.setColor(Color.BLACK);
         turtle.setPaint(Texture.barkTex);
+
+    }
+
+    public Map<NonTerminal, Point> getTestHashMap() {
+        return testHashMap;
+    }
+
+    public void setTestHashMap(Map<NonTerminal, Point> testHashMap) {
+        this.testHashMap = testHashMap;
 
     }
 }

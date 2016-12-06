@@ -4,7 +4,7 @@ package com.company;
  * Created by MasterWillis on 03/12/2016.
  */
 public class Txt {
-    public String inputFromTxt = "A:F[+A][-A],b:ACA";
+    public String inputFromTxt = "A:F[-A][+A],b:ACA,";
 
     public Txt(){
 

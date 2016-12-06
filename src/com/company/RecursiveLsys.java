@@ -10,7 +10,7 @@ public class RecursiveLsys {
     Grammatik grammatik;
     char axiom1 = 'K';
     String treeLsys1 = "";
-    int genNo1 = 2;
+    int genNo1 = 3;
     String tree;
     ArrayList<String> rulesForRand;
 
