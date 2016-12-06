@@ -2,7 +2,7 @@ package com.company;
 
 public class Controller {
 
-    public Controller(com.leapmotion.leap.Controller controller2) {
+    public Controller(){//com.leapmotion.leap.Controller controller2) {
         Txt textFileReader = new Txt();
         String textFileString = textFileReader.getTxtInput();
 
