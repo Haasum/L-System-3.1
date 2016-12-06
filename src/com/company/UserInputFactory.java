@@ -24,7 +24,7 @@ public class UserInputFactory {
                 return new ExpandKeyListener(lsys);
 
             default:
-                System.out.println("I cannot detect which inputtype, you want. chose again");
+                System.out.println("I can't detect any user input, please try again");
         }
         return null;
     }

@@ -45,4 +45,8 @@ public class StaticView extends JFrame {
         turtle.addKeyListener(listener);
     }
 
-}
+    public void addListeners(KeyListener keyListener){
+        turtle.addKeyListener(keyListener);
+    }
+    }
+
