@@ -24,6 +24,7 @@ public class ExpandNodeMouseListener implements MouseListener{
 
         int x = e.getX();
         int y = e.getY();
+        int allowedDiff = 5;
 
         mouseP = new Point(x,y);
 
@@ -31,8 +32,9 @@ public class ExpandNodeMouseListener implements MouseListener{
 
         for (Point p : nonTerminalPoints ) {
             System.out.println("Dette er mit punkt "+ p);
-            if((p.getX() - mouseP.getX()) < 30 && (p.getY() - mouseP.getY()) < 30 ){
-                System.out.println("JEG SKAL EKSPANDERE");
+            if( ((p.getX() - mouseP.getX()) < allowedDiff && (p.getY() - mouseP.getY()) < allowedDiff) || ((mouseP.getX() - p.getX()) < allowedDiff && (mouseP.getY() - p.getY()) < allowedDiff )){
+
+                System.out.println("JEG SKAL EKSPANDERE på punkt nr " + mouseP);
             }
             else{
                 System.out.println("ØV");
