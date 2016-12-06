@@ -1,10 +1,16 @@
 package com.company;
 
+import java.io.IOException;
+
 public class Controller {
 
-    public Controller(){//com.leapmotion.leap.Controller controller2) {
-        Txt textFileReader = new Txt();
-        String textFileString = textFileReader.getTxtInput();
+    public Controller(IOException){//com.leapmotion.leap.Controller controller2) {
+
+        txt test = new txt();
+        String txtFile = test.checkTxt();
+
+        //Txt textFileReader = new Txt();
+        //String textFileString = textFileReader.getTxtInput();
 
         Grammatik grammatik = new Grammatik(textFileString);
         RecursiveLsys lsys = new RecursiveLsys(grammatik);
