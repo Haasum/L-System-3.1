@@ -1,16 +1,15 @@
 package com.company;
 
-import java.io.IOException;
-
 public class Controller {
 
-    public Controller(IOException){//com.leapmotion.leap.Controller controller2) {
-
-        txt test = new txt();
-        String txtFile = test.checkTxt();
+    public Controller()
+    {//com.leapmotion.leap.Controller controller2) {
+//
+  //      txt test = new txt();
+    //    String txtFile = test.checkTxt();
 
         //Txt textFileReader = new Txt();
-        //String textFileString = textFileReader.getTxtInput();
+        String textFileString = "A:F[+A][-A],b:aba,";//textFileReader.getTxtInput();
 
         Grammatik grammatik = new Grammatik(textFileString);
         RecursiveLsys lsys = new RecursiveLsys(grammatik);

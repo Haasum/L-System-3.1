@@ -24,17 +24,19 @@ public class ExpandNodeMouseListener implements MouseListener{
 
         int x = e.getX();
         int y = e.getY();
-        int allowedDiff = 5;
+        int allowedDiff = 2;
 
         mouseP = new Point(x,y);
+        System.out.println("mouse clicked");
 
         Collection<Point> nonTerminalPoints = turtle.getTestHashMap().values();
 
         for (Point p : nonTerminalPoints ) {
-            System.out.println("Dette er mit punkt "+ p);
-            if( ((p.getX() - mouseP.getX()) < allowedDiff && (p.getY() - mouseP.getY()) < allowedDiff) || ((mouseP.getX() - p.getX()) < allowedDiff && (mouseP.getY() - p.getY()) < allowedDiff )){
 
-                System.out.println("JEG SKAL EKSPANDERE på punkt nr " + mouseP);
+            if (((p.getX() - mouseP.getX() < allowedDiff) || (mouseP.getX() - p.getX() < allowedDiff)) && (((p.getY() - mouseP.getY() < allowedDiff) || (mouseP.getY() - p.getY() < allowedDiff))))
+       {
+                System.out.println("mouse is clicked on " + mouseP);
+                System.out.println("JEG SKAL EKSPANDERE på punkt nr " + p);
             }
             else{
                 System.out.println("ØV");
