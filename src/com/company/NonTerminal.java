@@ -2,36 +2,45 @@ package com.company;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 
-/**
- * Created by MasterWillis on 06/12/2016.
- */
 public class NonTerminal {
     Graphics2D g2d;
     AffineTransform affineTransform;
     private int x;
     private int y;
     private Point p;
+    Ellipse2D ntCircle;
 
-    public NonTerminal(Graphics2D g2d, AffineTransform affineTransform) {
+    public NonTerminal(Graphics2D g2d, AffineTransform affineTransform){
         this.g2d = g2d;
         this.affineTransform = affineTransform;
-
-        setPosition();
+        setScreenPosition();
         drawButton();
     }
 
-    private void setPosition() {
-        setX((int) affineTransform.getTranslateX());
-        setY((int) affineTransform.getTranslateY());
-        setP(new Point(getX(), getY()));
+    public void setScreenPosition(){
+        x = (int)affineTransform.getTranslateX();
+        y = (int)affineTransform.getTranslateY();
+        p = new Point(x, y);
+    }
+
+    private Point getScreenPosition() {
+
+        return p;
     }
 
     private void drawButton() {
-        g2d.fillOval(0,0,10,10);
+        ntCircle = new Ellipse2D.Float();
+        ntCircle.setFrameFromCenter(x,y,15,15);
+        //ntCircle.setFrameFromCenter(0,0,15,15);
+        g2d.draw(ntCircle);
+    }
+    public Ellipse2D getNtCircle(){
+        return ntCircle;
     }
 
-    public int getX() {
+/*    public int getX() {
         return x;
     }
 
@@ -53,6 +62,6 @@ public class NonTerminal {
 
     public void setP(Point p) {
         this.p = p;
-    }
-
+    }*/
 }
+
