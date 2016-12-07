@@ -20,8 +20,8 @@ public class Turtle extends JPanel{
     RecursiveLsys lsys;
     Graphics2D g2d;
     Texture texture;
-
-
+    ArrayList<NonTerminal> listOfNT;
+    NonTerminal nt;
 
     ExpandNodeMouseListener expandNodeMouseListener;
     private Map<NonTerminal,Point> testHashMap;
@@ -44,6 +44,7 @@ public class Turtle extends JPanel{
         makeButtons();
         makeMouseListener();
         testHashMap = new HashMap<>();
+        listOfNT = new ArrayList<NonTerminal>();
 
     }
 
@@ -68,6 +69,7 @@ public class Turtle extends JPanel{
 
     @Override
     public void paintComponent(Graphics g) {
+        listOfNT.clear();
         testHashMap.clear();
         super.paintComponent(g);
         g2d = (Graphics2D) g.create();
@@ -86,7 +88,7 @@ public class Turtle extends JPanel{
                     makeLog(g2d);
                     break;
                 case 'A':
-                    nonTerminal(g2d);
+                    drawNonTerminal(g2d);
 
                //     interpretNonTerminal(g2d, i,  currentCheck);
                     break;
@@ -111,15 +113,6 @@ public class Turtle extends JPanel{
         requestFocus();
     }
 
-    private void nonTerminal(Graphics2D g2d) {
-        AffineTransform tf = g2d.getTransform();
-        NonTerminal nt = new NonTerminal(g2d, tf);
-        testHashMap.put(nt, nt.getP());
-        setTestHashMap(testHashMap);
-
-
-
-    }
 
     private void interpretNonTerminal(Graphics2D g2d, int i, char a) {
 
@@ -134,17 +127,14 @@ public class Turtle extends JPanel{
         but.setBounds(x,y,10,10);
         add(but);
     }
-
     private void push(Graphics2D g2d) {
         subTrees.add(g2d.getTransform());
     }
-
     private void pop(Graphics2D g2d) {
         AffineTransform t = subTrees.get(subTrees.size()-1);
         g2d.setTransform(t);
         subTrees.remove(subTrees.size()-1);
     }
-
     private void growBranch(Graphics2D g2d) {
         g2d.setStroke(new BasicStroke(2.0f));
 
@@ -170,7 +160,6 @@ public class Turtle extends JPanel{
     private void rotateRight(Graphics2D g2d) {
         g2d.rotate(-Math.PI/6);
     }
-
     private void makeLog(Graphics2D g2d) {
         GeneralPath logShape = new GeneralPath();
         final double points[][]= {
@@ -216,7 +205,6 @@ public class Turtle extends JPanel{
             }
         });
     }
-
     private void makeBackground(Graphics2D turtle) {
         turtle.drawImage(backImg,0,0,screenWidth,screenHeight, this); //backgroundIMG. placed on position 0,0 - and scaled to fit screensize
         turtle.setPaint(Texture.soilTex); //sets the soil texture
@@ -225,12 +213,40 @@ public class Turtle extends JPanel{
 
     }
 
+    public void drawNonTerminal(Graphics2D g2d){
+        AffineTransform affineTransform = new AffineTransform();
+        nt = new NonTerminal(g2d, affineTransform);//, affineTransform);
+        listOfNT.add(nt);
+    }
+
+    public void ntClicked(int mouseX, int mouseY) {
+
+        for (NonTerminal nt : listOfNT ) {
+            System.out.println("Jeg er musse-x koordninat: "+mouseX+" jeg er cirkelcenter : ");
+            System.out.println("Jeg er musse-y koordninat: "+mouseY+" jeg er cirkelcenter : ");
+            System.out.println(nt.getNtCircle().getY());
+            if (nt.getNtCircle().contains(mouseX,mouseY) == true){
+                System.out.println("works");
+            }
+            else {
+                System.out.println("Jeg er ikke inde i cirklen");
+            }
+        }
+
+    }
+
+    /*private void drawNonTerminal(Graphics2D g2d) {
+        AffineTransform tf = g2d.getTransform();
+        NonTerminal nt = new NonTerminal(g2d, tf);
+        testHashMap.put(nt, nt.getP());
+        setTestHashMap(testHashMap);
+
+    }
     public Map<NonTerminal, Point> getTestHashMap() {
         return testHashMap;
     }
-
     public void setTestHashMap(Map<NonTerminal, Point> testHashMap) {
         this.testHashMap = testHashMap;
 
-    }
+    }*/
 }
