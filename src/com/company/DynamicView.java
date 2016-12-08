@@ -2,8 +2,6 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class DynamicView extends JPanel{
     static int screenWidth = (int) screenSize.getWidth();
     static int middleX = (screenWidth-MENU_WIDTH)/2;
     static int screenHeight = (int) screenSize.getHeight();
-    private static final int BRANCH_HEIGHT = -15;
+    private static final int BRANCH_HEIGHT = -40;
     AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX,screenHeight-160);
     ArrayList<AffineTransform> subTrees = new ArrayList<AffineTransform>();
 

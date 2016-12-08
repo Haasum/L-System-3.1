@@ -24,8 +24,8 @@ public class StaticView extends JFrame {
 
         drawMainPanel();
         drawMenuPanel();
-        texture = new Texture(true);
 
+        texture = new Texture(true);
     }
 
     private void drawMainPanel() {
@@ -45,9 +45,9 @@ public class StaticView extends JFrame {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize);
         setVisible(true);
-        setLayout(new BorderLayout());
-        //setLocation(0,0);
-        setLocationRelativeTo(null);
+        setLayout(null);
+        setLocation(500,0);
+        //setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
