@@ -14,6 +14,7 @@ public class ButtonExpandListener implements ActionListener{
     char c = 'A';
     NonTerminal nt;
     ArrayList<NonTerminal> ntArray;
+    String middleString;
 
     public ButtonExpandListener(ArrayList<NonTerminal> ntArray, RecursiveLsys lsys){
         this.ntArray = ntArray;
@@ -28,33 +29,58 @@ public class ButtonExpandListener implements ActionListener{
 
     private void checkArray() {
         String currTree = lsys.getTree();
-        System.out.println("Jeg bliver leget med "+currTree);
-        String newTree1 = currTree.substring(0,ntArray.get(0).getI());
+        System.out.println("Jeg bliver leget med " + currTree);
+        String newTree1 = currTree.substring(0, ntArray.get(0).getI());
         System.out.println("first tree " + newTree1);
 
-        String toBeExpanded = ""+ntArray.get(0).getC();
+        String toBeExpanded = "" + ntArray.get(0).getC();
         String expandedTree = lsys.expand(toBeExpanded, 1);
-        String newTree2 = expandedTree ;
+        String newTree2 = expandedTree;
         System.out.println("second tree " + newTree2);
 
-        String newTree3 = currTree.substring(ntArray.get(0).getI()+1,ntArray.get(1).getI());
-        System.out.println("third tree"+newTree3);
+        String newTree3 = currTree.substring(ntArray.get(0).getI() + 1, ntArray.get(1).getI());
+        System.out.println("third tree" + newTree3);
 
 
-        String toBeExpanded2 = ""+ntArray.get(1).getC();
+        String toBeExpanded2 = "" + ntArray.get(1).getC();
         String expandedTree2 = lsys.expand(toBeExpanded2, 1);
-        String newTree4 = expandedTree2 ;
+        String newTree4 = expandedTree2;
         System.out.println("fourth tree " + newTree4);
 
-        String newTree5 = currTree.substring(ntArray.get(1).getI()+1,currTree.length());
-        System.out.println("fifth tree"+newTree5);
+        String newTree5 = currTree.substring(ntArray.get(1).getI() + 1, currTree.length());
+        System.out.println("fifth tree" + newTree5);
+
+        lsys.setTree(newTree1 + newTree2 + newTree3 + newTree4 + newTree5);
+
+        ArrayList<String> subStrings = new ArrayList<String>();
+        String ntree1 = currTree.substring(0, ntArray.get(0).getI());
+        //  subStrings.add(ntree1);
+        int previousInt = 0;
 
         for (int j = 0; j < ntArray.size(); j++) {
+            String ntree2 = currTree.substring(previousInt, ntArray.get(j).getI());
+            subStrings.add(ntree2);
+            System.out.println("ntree2 is " + ntree2);
 
-            ntArray.get(j).getI();
+            if (j < ntArray.size()-1) {
+                String ntree3 = "" + ntArray.get(j).getC();
+                subStrings.add(ntree3);
+                System.out.println("ntree3 is " + ntree3);
+                previousInt = ntArray.get(j).getI()+1;
+            }
+            else  {//if (ntArray.size() == j) {
+                String ntree4 = "" + ntArray.get(j).getC();
+                subStrings.add(ntree4);
+                String ntree5 = currTree.substring(ntArray.get(j).getI()+1, currTree.length());
+                subStrings.add(ntree5);
+                System.out.println("ntree4 is " + ntree4);
+
+                System.out.println("ntree5 is " + ntree5);
+
+            }
+
 
         }
-
     }
 
     public void expandNodeInTree(){
