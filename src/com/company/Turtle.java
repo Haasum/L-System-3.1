@@ -220,7 +220,7 @@ public class Turtle extends JPanel{
     }
 
     public void drawNonTerminal(Graphics2D g2d, Graphics2D g2dd){
-        AffineTransform newTransform = new AffineTransform(g2d.getTransform());
+        AffineTransform newTransform = g2d.getTransform();
         nt = new NonTerminal(g2dd, newTransform, this);//, affineTransform);
         listOfNT.add(nt);
     }
@@ -230,7 +230,6 @@ public class Turtle extends JPanel{
 
 
         for (NonTerminal nt : listOfNT ) {
-
 
             if (nt.getNtCircle().contains(mouseX,mouseY) == true){
                 System.out.println("jeg er inde i en cirkel");

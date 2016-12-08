@@ -13,6 +13,7 @@ public class NonTerminal {
     Ellipse2D ntCircle;
     Turtle turtle;
     Point realX;
+    static final int CIRCLE_RADIUS = 5;
 
     public NonTerminal(Graphics2D g2dd, AffineTransform affineTransform, Turtle turtle){
         this.g2dd = g2dd;
@@ -33,12 +34,11 @@ public class NonTerminal {
 
     private void setRealX() {
         realX = p.getLocation();
-
     }
 
     private void drawButton() {
         ntCircle = new Ellipse2D.Float();
-        ntCircle.setFrameFromCenter(x,y,x+5,y+5);
+        ntCircle.setFrameFromCenter(x,y,x+CIRCLE_RADIUS,y+CIRCLE_RADIUS);
         g2dd.setPaint(Color.magenta);
         g2dd.fill(ntCircle);
         g2dd.draw(ntCircle);

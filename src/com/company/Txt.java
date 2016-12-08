@@ -18,7 +18,7 @@ public class Txt {
     public String checkTxt() throws IOException {
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("C:\\Users\\nanna\\IdeaProjects\\Proto2\\Proto2\\src\\LsysRecursive\\testTxt.txt"));
+            br = new BufferedReader(new FileReader("src//TextfilePackage//txt.txt"));
             StringBuilder sb = new StringBuilder();
             String line;
             line = br.readLine();
@@ -32,7 +32,7 @@ public class Txt {
                     e.printStackTrace();
                 }
                 String inputFromText = sb.toString();
-                System.out.println("textfilen er " + inputFromText + "woop woop");
+                return inputFromText;
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

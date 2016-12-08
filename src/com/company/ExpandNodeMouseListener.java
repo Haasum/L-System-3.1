@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 /**
  * Created by MasterWillis on 06/12/2016.
  */
-public class ExpandNodeMouseListener implements MouseListener{
+public class ExpandNodeMouseListener implements MouseListener{ //TODO: ændre navn til NonTerminalMouseListener
 
     Turtle turtle;
     Point mouseP;
