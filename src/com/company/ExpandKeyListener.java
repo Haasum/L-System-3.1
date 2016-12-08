@@ -9,7 +9,7 @@ public class ExpandKeyListener implements KeyListener, UserInput {
     RecursiveLsys lsys;
     String treeToExpand;
     String expandedTree;
-    int currGenNo =3;
+    int currGenNo =0;
     int maxGenNo = 10;
 
     public ExpandKeyListener(RecursiveLsys lsys){

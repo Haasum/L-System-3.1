@@ -78,6 +78,12 @@ public class DynamicView extends JPanel{
                 case 'A':
                     drawNonTerminal(turtle, g2d, i, currentCheck);
                     break;
+                case 'B':
+                    drawNonTerminal(turtle, g2d, i, currentCheck);
+                    break;
+                case 'C':
+                    drawNonTerminal(turtle, g2d, i, currentCheck);
+                    break;
                 case '+':
                     rotateRight(turtle);
                     break;
@@ -120,8 +126,8 @@ public class DynamicView extends JPanel{
 
         for (int i = 0; i < 4; i++) {
 
-            turtle.drawImage(leafImg,0,(i-1)*10,this);
-            turtle.drawImage(leafImg2,-15,(i-1)*9, this);
+            turtle.drawImage(leafImg,0,(i-1)*((-1)*BRANCH_HEIGHT/4),this);
+           turtle.drawImage(leafImg2,-15,(i-1)*((-1)*(10*BRANCH_HEIGHT)/47), this);
 
         }
 

@@ -48,8 +48,7 @@ public class StaticView extends JFrame {
         setSize(screenSize);
         setVisible(true);
         setLayout(null);
-        setLocation(500,0);
-        //setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
