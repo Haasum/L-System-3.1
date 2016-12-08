@@ -41,7 +41,7 @@ public class DynamicView extends JPanel{
         super();
         setFocusable(true);
         this.lsys = lsys;
-        System.out.println("Jeg er træet, der tegnes: "+lsys.getTree());
+        System.out.println("Jeg er axiomet: "+lsys.getTree());
 
         makeMouseListener();
         testHashMap = new HashMap<>();
