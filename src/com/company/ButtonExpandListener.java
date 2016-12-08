@@ -79,7 +79,13 @@ public class ButtonExpandListener implements ActionListener{
 
             }
 
+            String newTreeTheEnd = "";
 
+            for (String s : subStrings)
+            {
+                newTreeTheEnd += s + "\t";
+            }
+            System.out.println(newTreeTheEnd);
         }
     }
 
