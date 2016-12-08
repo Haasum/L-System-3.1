@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public class RecursiveLsys {
     ArrayList<Rule> ruleset;
     Grammatik grammatik;
-    char axiom1 = 'K';
+    char axiom1;
     String treeLsys1 = "";
-    int genNo1 = 3;
+    int genNo1 = 0;
     String tree;
     ArrayList<String> rulesForRand;
 
@@ -19,7 +19,9 @@ public class RecursiveLsys {
 //TODO i recsys: Den expander første omgang forkert
 
     public RecursiveLsys(Grammatik grammatik) {
+
         this.grammatik = grammatik;
+        axiom1 = grammatik.addAxiom();
         this.ruleset = grammatik.ruleset;
         treeLsys1 += axiom1;
         tree = expand(treeLsys1, genNo1);
@@ -27,6 +29,7 @@ public class RecursiveLsys {
 
     }
     public String expand(String s, int genNo1) {
+
         String next = "";
 
         if (genNo1 == 0) {

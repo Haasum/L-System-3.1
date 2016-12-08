@@ -21,14 +21,11 @@ public class Grammatik {
         addPrimitives();
         addRules();
     }
-    private void addAxiom() {
-
-        char axiom = 'K';
-        String axiomRule = "F[A]";
-        Rule axRule = new Rule(axiom, axiomRule);
-        ruleset.add(axRule);
-
+    public char addAxiom() {
+        char axiom = textFile.charAt(0);
+        return axiom;
     }
+
     public void addPrimitives(){
         char[] primitives = new char[]{'[',']','+','-'};
         for (char c :primitives) {
