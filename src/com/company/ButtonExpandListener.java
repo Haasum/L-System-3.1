@@ -30,7 +30,7 @@ public class ButtonExpandListener implements ActionListener{
     private void checkArray() {
         String currTree = lsys.getTree();
         System.out.println("Jeg bliver leget med " + currTree);
-        String newTree1 = currTree.substring(0, ntArray.get(0).getI());
+/*        String newTree1 = currTree.substring(0, ntArray.get(0).getI());
         System.out.println("first tree " + newTree1);
 
         String toBeExpanded = "" + ntArray.get(0).getC();
@@ -50,10 +50,10 @@ public class ButtonExpandListener implements ActionListener{
         String newTree5 = currTree.substring(ntArray.get(1).getI() + 1, currTree.length());
         System.out.println("fifth tree" + newTree5);
 
-        lsys.setTree(newTree1 + newTree2 + newTree3 + newTree4 + newTree5);
+        lsys.setTree(newTree1 + newTree2 + newTree3 + newTree4 + newTree5);*/
 
         ArrayList<String> subStrings = new ArrayList<String>();
-        String ntree1 = currTree.substring(0, ntArray.get(0).getI());
+        //String ntree1 = currTree.substring(0, ntArray.get(0).getI());
         //  subStrings.add(ntree1);
         int previousInt = 0;
 
@@ -64,13 +64,17 @@ public class ButtonExpandListener implements ActionListener{
 
             if (j < ntArray.size()-1) {
                 String ntree3 = "" + ntArray.get(j).getC();
-                subStrings.add(ntree3);
+                String expandedTree2 = lsys.expand(ntree3, 1);
+                subStrings.add(expandedTree2);
+
                 System.out.println("ntree3 is " + ntree3);
                 previousInt = ntArray.get(j).getI()+1;
             }
             else  {//if (ntArray.size() == j) {
                 String ntree4 = "" + ntArray.get(j).getC();
-                subStrings.add(ntree4);
+                String expandedTree = lsys.expand(ntree4, 1);
+                subStrings.add(expandedTree);
+
                 String ntree5 = currTree.substring(ntArray.get(j).getI()+1, currTree.length());
                 subStrings.add(ntree5);
                 System.out.println("ntree4 is " + ntree4);
@@ -79,14 +83,15 @@ public class ButtonExpandListener implements ActionListener{
 
             }
 
-            String newTreeTheEnd = "";
-
-            for (String s : subStrings)
-            {
-                newTreeTheEnd += s + "\t";
-            }
-            System.out.println(newTreeTheEnd);
         }
+
+        String newTreeTheEnd = "";
+
+        for (String s : subStrings)
+        {
+            newTreeTheEnd += s;
+        }
+        lsys.setTree(newTreeTheEnd);
     }
 
     public void expandNodeInTree(){

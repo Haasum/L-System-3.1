@@ -73,7 +73,7 @@ public class RecursiveLsys {
 
     public void setTree(String tree) {
         this.tree = tree;
-        System.out.println(tree);
+        System.out.println("Dette er setTree" + tree);
     }
 
     public String getTree(){

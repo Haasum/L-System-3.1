@@ -180,12 +180,14 @@ public class DynamicView extends JPanel{
             }
             else {
 
+                System.out.println("Du har klikket ved siden af.");
             }
 
         }
 
         System.out.println(ntArray.size());
-        expandNode(ntArray);
+        if(ntArray.isEmpty() == false){
+        expandNode(ntArray);}
 
     }
 
