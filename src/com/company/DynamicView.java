@@ -14,12 +14,10 @@ import static com.company.Texture.*;
 
 public class DynamicView extends JPanel{
 
-    //private final
     ButtonExpandListener buttonListener;
     RecursiveLsys lsys;
     Graphics2D turtle;
     Graphics2D g2d;
-    Texture texture;
     ArrayList<NonTerminal> listOfNT;
     NonTerminal nt;
     ButtonExpandListener buttonExpandListener;
@@ -28,19 +26,16 @@ public class DynamicView extends JPanel{
     ExpandNodeMouseListener expandNodeMouseListener;
     private Map<NonTerminal,Point> testHashMap;
 
-
+    static int screenHeight = (int) screenSize.getHeight();
     static int screenWidth = (int) screenSize.getWidth();
     static int middleX = (screenWidth-MENU_WIDTH)/2;
-    static int screenHeight = (int) screenSize.getHeight();
     private static final int BRANCH_HEIGHT = -40;
-    AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX,screenHeight-160);
+    AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX,screenHeight-100);
     ArrayList<AffineTransform> subTrees = new ArrayList<AffineTransform>();
 
-    ArrayList<JButton> buttonList = new ArrayList<JButton>();
 
     public DynamicView(RecursiveLsys lsys) {
         super();
-        setFocusable(true);
         this.lsys = lsys;
         System.out.println("Jeg er axiomet: "+lsys.getTree());
 
@@ -69,16 +64,16 @@ public class DynamicView extends JPanel{
 
         turtle.setTransform(originalTrans);
 
-
+        int j = 0;
         for (int i = 0; i < lsys.getTree().length(); i++) {
             char currentCheck = lsys.getTree().charAt(i);
 
+
             switch (currentCheck) {
                 case 'F':
-                    growBranch(turtle);
-                    break;
-                case 'K': // TODO: skal nok være if sætning, hvis det er det første F, skal det være en stamme. bare et forslag. hilsen naja
-                    makeLog(turtle);
+                    j++;
+                    if (j == 1) { makeLog(turtle);}
+                    else {growBranch(turtle);}
                     break;
                 case 'A':
                     drawNonTerminal(turtle, g2d, i, currentCheck);
@@ -101,22 +96,9 @@ public class DynamicView extends JPanel{
             }
         }
         repaint();
-        requestFocus();
+        requestFocus(); //TODO: Julie hvorfor fokus?
     }
 
-
-    private void interpretNonTerminal(Graphics2D turtle, int i, char a) {
-
-        AffineTransform curTf = turtle.getTransform();
-        int x = (int) curTf.getTranslateX();
-        int y = (int) curTf.getTranslateY();
-        JButton but = new JButton();
-        but.setBackground(Color.MAGENTA);
-        but.addActionListener(buttonListener);
-
-        but.setBounds(x,y,10,10);
-        add(but);
-    }
     private void push(Graphics2D turtle) {
         subTrees.add(turtle.getTransform());
     }
@@ -130,18 +112,19 @@ public class DynamicView extends JPanel{
 
         turtle.drawLine(0,0,0, BRANCH_HEIGHT);
         turtle.translate(0,BRANCH_HEIGHT);
-      //  drawLeafs(turtle); //draw Leafs bliver ikke kaldt i denne version, da vi skal rette nogle ting
+        drawLeafs(turtle); //draw Leafs bliver ikke kaldt i denne version, da vi skal rette nogle ting
     }
 
     private void drawLeafs(Graphics2D turtle) {
         //TODO: skal være object der får xpos og ypos for leaf ind. klasse til det er lavet ("Leaf")
-        turtle.drawImage(leafImg, 0,-38,this);
-        turtle.drawImage(leafImg, 0,-53,this);
-        turtle.drawImage(leafImg,0,-17,this);
-        turtle.drawImage(leafImg2, -27,-22,this);
-        turtle.drawImage(leafImg2, -27,-40,this);
-        turtle.drawImage(leafImg2, -27,-55,this);
-        turtle.drawImage(leafHigh,-15,BRANCH_HEIGHT-4,this);
+
+        for (int i = 0; i < 4; i++) {
+
+            turtle.drawImage(leafImg,0,(i-1)*10,this);
+            turtle.drawImage(leafImg2,-15,(i-1)*9, this);
+
+        }
+
 
     }
     private void rotateLeft(Graphics2D turtle) {
@@ -153,8 +136,8 @@ public class DynamicView extends JPanel{
     private void makeLog(Graphics2D turtle) {
         GeneralPath logShape = new GeneralPath();
         final double points[][]= {
-                { -2, -250}, {2, -250},
-                { 6 ,-50}, { -6,-50 }
+                { -2, -200}, {2, -200},
+                { 6 ,0}, { -6,0 }
         };
 
         logShape.moveTo(points[0][0], points[0][1]);
@@ -164,7 +147,7 @@ public class DynamicView extends JPanel{
         logShape.closePath();
 
         turtle.fill(logShape);
-        turtle.translate(0,-250);
+        turtle.translate(0,-200);
 
 
     }
@@ -207,7 +190,7 @@ public class DynamicView extends JPanel{
     }
 
     private void expandNode(ArrayList ntArray) {
-        new ButtonExpandListener(ntArray, lsys);
+        new ButtonExpandListener(ntArray, lsys); //TODO: skal være med lille
 
     /*    for (int i = 0; i < ntArray.size(); i++) {
             new ButtonExpandListener((NonTerminal) ntArray.get(i), lsys);

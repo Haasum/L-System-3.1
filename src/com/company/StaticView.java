@@ -25,7 +25,9 @@ public class StaticView extends JFrame {
         drawMainPanel();
         drawMenuPanel();
 
+
         texture = new Texture(true);
+
     }
 
     private void drawMainPanel() {
