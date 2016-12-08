@@ -9,6 +9,7 @@ public class ExpandKeyListener implements KeyListener, UserInput {
     RecursiveLsys lsys;
     String treeToExpand;
     String expandedTree;
+    int Number =3;
 
     public ExpandKeyListener(RecursiveLsys lsys){
         this.lsys = lsys;
@@ -21,7 +22,7 @@ public class ExpandKeyListener implements KeyListener, UserInput {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == e.VK_UP) {
+        if (e.getKeyCode() == e.VK_UP)  {
             expandGeneration(lsys);
 
         }
@@ -37,9 +38,13 @@ public class ExpandKeyListener implements KeyListener, UserInput {
 
     @Override
     public void expandGeneration(RecursiveLsys lsys) {
+        if (Number <=7){
+            Number++;
         treeToExpand = lsys.getTree();
         expandedTree = lsys.expand(treeToExpand,1);
-        lsys.setTree(expandedTree);
+        lsys.setTree(expandedTree);}
+        else
+        System.out.println("Too many generations");
 
     }
 }
