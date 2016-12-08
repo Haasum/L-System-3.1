@@ -55,16 +55,6 @@ public class DynamicView extends JPanel{
     }
 
 
-    public void getNonTerminals(){
-        for (int i = 0; i < lsys.getTree().length(); i++) {
-            char currentCheck = lsys.getTree().charAt(i);
-            if(currentCheck == 'A'){
-                JButton but = new JButton();
-                buttonList.add(but);
-            }
-        }
-
-    }
 
     @Override
     public void paintComponent(Graphics g) {
