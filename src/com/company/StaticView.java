@@ -8,6 +8,8 @@ import static com.company.DynamicView.screenHeight;
 import static com.company.DynamicView.screenWidth;
 
 
+
+
 public class StaticView extends JFrame {
     static Dimension screenSize;
     JPanel dynamicView;
@@ -50,7 +52,7 @@ public class StaticView extends JFrame {
     }
 
     private void drawMenuPanel() {
-        menuPanel = new MenuPanel(lsys);
+        menuPanel = new MenuPanel(lsys, this);
         menuPanel.setVisible(true);
         menuPanel.setSize(MENU_WIDTH, screenHeight);
         menuPanel.setBackground(new Color(255,255,255));
@@ -63,8 +65,9 @@ public class StaticView extends JFrame {
         dynamicView.addKeyListener(listener);
     }
 
-    public void addListeners(KeyListener keyListener){
-        dynamicView.addKeyListener(keyListener);
+    public void addListeners(ExpandKeyListener expandKeyListener){
+
+        dynamicView.addKeyListener(expandKeyListener);
     }
     }
 

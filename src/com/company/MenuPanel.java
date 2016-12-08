@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.util.Map;
 
 /**
  * Created by naja on 08-12-2016.
@@ -12,8 +14,14 @@ public class MenuPanel extends JPanel {
     RecursiveLsys lsys;
     Texture texture;
     public enum InputType {LEAPLISTENER, KEYLISTENER};
+    private Map<JButton,InputType> inputTypeMap;
+    UserInput userInput;
+    StaticView staticView;
+    DynamicView dynamicView;
 
-    public MenuPanel(RecursiveLsys lsys) {
+
+    public MenuPanel(RecursiveLsys lsys, StaticView staticView) {
+        this.staticView = staticView;
         this.lsys = lsys;
         makeViewButtons();
         makeInputButtons();
@@ -33,10 +41,26 @@ public class MenuPanel extends JPanel {
             inputbutton.setBackground(Color.darkGray);
             inputbutton.setSize(50, 50);
             this.add(inputbutton);
+        //    inputTypeMap.put(inputbutton,k);
 
+            inputbutton.addActionListener(new ActionListener() {
 
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    UserInputFactory userInputFactory = new UserInputFactory(lsys);
+                    userInput = userInputFactory.fetchUserInput(k);
+                    addNewListener(userInput);
+                }
+            });
         }
 
+    }
+
+    private void addNewListener(UserInput userInput) {
+        System.out.println("den listener der skal køre er " + userInput);
+
+        staticView.addKeyListener((KeyListener) userInput);
+      //  staticView.addListeners();
     }
 
 

@@ -19,6 +19,7 @@ public class Controller {
         RecursiveLsys lsys = new RecursiveLsys(grammatik);
 
         StaticView staticView = new StaticView(lsys);
+
         ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsys);
 
 

@@ -6,13 +6,15 @@ package com.company;
 public class UserInputFactory {
 
     RecursiveLsys lsys;
-    public enum InputType {LEAPLISTENER, KEYLISTENER};
+    MenuPanel.InputType inputType;
+    StaticView staticView;
+  //  public enum InputType {LEAPLISTENER, KEYLISTENER};
 
     public UserInputFactory(RecursiveLsys lsys) {
         this.lsys = lsys;
     }
 
-    public UserInput fetchUserInput(InputType inputType) {
+    public UserInput fetchUserInput(MenuPanel.InputType inputType) {
 
         switch (inputType) {
             case LEAPLISTENER:
