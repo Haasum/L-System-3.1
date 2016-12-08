@@ -1,11 +1,10 @@
-package com.company;
+package com.lsystem;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
 
-import static com.company.DynamicView.screenHeight;
-import static com.company.DynamicView.screenWidth;
+import static com.lsystem.DynamicView.screenHeight;
+import static com.lsystem.DynamicView.screenWidth;
 
 
 

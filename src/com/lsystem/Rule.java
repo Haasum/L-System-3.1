@@ -1,4 +1,4 @@
-package com.company;
+package com.lsystem;
 
 public class Rule {
     private char alfabet;

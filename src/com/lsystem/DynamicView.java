@@ -1,4 +1,4 @@
-package com.company;
+package com.lsystem;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.company.StaticView.MENU_WIDTH;
-import static com.company.StaticView.screenSize;
-import static com.company.Texture.*;
+import static com.lsystem.StaticView.MENU_WIDTH;
+import static com.lsystem.StaticView.screenSize;
+import static com.lsystem.Texture.*;
 
 public class DynamicView extends JPanel {
 

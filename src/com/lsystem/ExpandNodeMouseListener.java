@@ -1,4 +1,4 @@
-package com.company;
+package com.lsystem;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

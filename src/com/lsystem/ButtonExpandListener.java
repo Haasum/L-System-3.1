@@ -1,4 +1,4 @@
-package com.company;
+package com.lsystem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

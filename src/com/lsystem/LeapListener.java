@@ -1,6 +1,6 @@
 
 /*
-package com.company;
+package com.lsystem;
 import com.leapmotion.leap.Controller;
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Frame;
@@ -8,8 +8,8 @@ import com.leapmotion.leap.Frame;
 import javax.swing.*;
 import java.awt.*;
 
-import static com.company.Turtle.screenHeight;
-import static com.company.Turtle.screenWidth;
+import static com.lsystem.Turtle.screenHeight;
+import static com.lsystem.Turtle.screenWidth;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 

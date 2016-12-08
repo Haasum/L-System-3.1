@@ -1,5 +1,5 @@
 
-package com.company;
+package com.lsystem;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
