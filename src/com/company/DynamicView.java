@@ -22,6 +22,7 @@ public class DynamicView extends JPanel{
     Texture texture;
     ArrayList<NonTerminal> listOfNT;
     NonTerminal nt;
+    ButtonExpandListener buttonExpandListener;
 
     ExpandNodeMouseListener expandNodeMouseListener;
     private Map<NonTerminal,Point> testHashMap;
@@ -89,13 +90,7 @@ public class DynamicView extends JPanel{
                     makeLog(turtle);
                     break;
                 case 'A':
-                    drawNonTerminal(turtle, g2d);
-                    break;
-                case 'B':
-                    drawNonTerminal(turtle, g2d);
-                    break;
-                case 'C':
-                    drawNonTerminal(turtle, g2d);
+                    drawNonTerminal(turtle, g2d, i, currentCheck);
                     break;
                 case '+':
                     rotateRight(turtle);
@@ -126,7 +121,6 @@ public class DynamicView extends JPanel{
         int y = (int) curTf.getTranslateY();
         JButton but = new JButton();
         but.setBackground(Color.MAGENTA);
-        buttonListener = new ButtonExpandListener(lsys, i, a);
         but.addActionListener(buttonListener);
 
         but.setBounds(x,y,10,10);
@@ -192,33 +186,40 @@ public class DynamicView extends JPanel{
 
     }
 
-    public void drawNonTerminal(Graphics2D turtle, Graphics2D g2dd){
+    public void drawNonTerminal(Graphics2D turtle, Graphics2D g2dd,int i, char c){
         AffineTransform newTransform = turtle.getTransform();
-        nt = new NonTerminal(g2dd, newTransform, this);//, affineTransform);
+        nt = new NonTerminal(g2dd, newTransform, this, i, c);//, affineTransform);
         listOfNT.add(nt);
     }
 
     public void ntClicked(int mouseX, int mouseY) {
 
+        ArrayList<NonTerminal> ntArray = new ArrayList<NonTerminal>();
 
 
         for (NonTerminal nt : listOfNT ) {
 
             if (nt.getNtCircle().contains(mouseX,mouseY) == true){
                 System.out.println("jeg er inde i en cirkel");
-                AffineTransform expandTrans = new AffineTransform(nt.getAffineTransform());
-                System.out.println("Affinetransform for denne cirkel er " + expandTrans);
-                expandNode(expandTrans);
+                ntArray.add(nt);
+                //expandNode(nt);
             }
             else {
 
             }
+            expandNode(ntArray);
         }
 
     }
 
-    private void expandNode(AffineTransform expandTrans) {
-        turtle.setTransform(expandTrans);
+    private void expandNode(ArrayList ntArray) {
+
+        for (int i = 0; i < ntArray.size(); i++) {
+            new ButtonExpandListener((NonTerminal) ntArray.get(i), lsys);
+        }
+
+
+
     }
 
     /*private void drawNonTerminal(Graphics2D turtle) {

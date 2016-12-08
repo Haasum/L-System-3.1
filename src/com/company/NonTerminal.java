@@ -14,11 +14,15 @@ public class NonTerminal {
     DynamicView dynamicView;
     Point realX;
     static final int CIRCLE_RADIUS = 5;
+    private int i;
+    private char c;
 
-    public NonTerminal(Graphics2D g2dd, AffineTransform affineTransform, DynamicView dynamicView){
+    public NonTerminal(Graphics2D g2dd, AffineTransform affineTransform, DynamicView dynamicView, int i, char c){
         this.g2dd = g2dd;
         this.setAffineTransform(affineTransform);
         this.dynamicView = dynamicView;
+        this.c = c;
+        this.i = i;
         setScreenPosition();
         drawButton();
         setRealX();
@@ -66,6 +70,14 @@ public class NonTerminal {
 
     public void setAffineTransform(AffineTransform affineTransform) {
         this.affineTransform = affineTransform;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public char getC() {
+        return c;
     }
 
 
