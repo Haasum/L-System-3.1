@@ -1,4 +1,4 @@
-package com.lsystem;
+package com.lsystem.control;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.lsystem;
+package com.lsystem.model;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class RecursiveLsys {
         this.ruleset = grammatik.ruleset;
         treeLsys1 += axiom1;
         tree = expand(treeLsys1, genNo1);
-        System.out.println(tree);
+
 
     }
     public String expand(String s, int genNo1) {

@@ -1,4 +1,8 @@
-package com.lsystem;
+package com.lsystem.view;
+
+import com.lsystem.model.RecursiveLsys;
+import com.lsystem.control.UserInput;
+import com.lsystem.control.UserInputFactory;
 
 import javax.swing.*;
 import java.awt.*;

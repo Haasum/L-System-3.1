@@ -1,10 +1,13 @@
-package com.lsystem;
+package com.lsystem.view;
+
+import com.lsystem.control.ExpandKeyListener;
+import com.lsystem.model.RecursiveLsys;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static com.lsystem.DynamicView.screenHeight;
-import static com.lsystem.DynamicView.screenWidth;
+import static com.lsystem.view.DynamicView.screenHeight;
+import static com.lsystem.view.DynamicView.screenWidth;
 
 
 

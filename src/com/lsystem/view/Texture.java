@@ -1,4 +1,4 @@
-package com.lsystem;
+package com.lsystem.view;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

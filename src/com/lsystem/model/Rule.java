@@ -1,4 +1,4 @@
-package com.lsystem;
+package com.lsystem.model;
 
 public class Rule {
     private char alfabet;

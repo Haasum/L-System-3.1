@@ -1,5 +1,7 @@
 
-package com.lsystem;
+package com.lsystem.control;
+
+import com.lsystem.model.RecursiveLsys;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

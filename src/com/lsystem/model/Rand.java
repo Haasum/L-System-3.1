@@ -1,4 +1,4 @@
-package com.lsystem;
+package com.lsystem.model;
 import java.util.ArrayList;
 import java.util.Random;
 

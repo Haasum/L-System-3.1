@@ -1,4 +1,4 @@
-package com.lsystem;
+package com.lsystem.view;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;

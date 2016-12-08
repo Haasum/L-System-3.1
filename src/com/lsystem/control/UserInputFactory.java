@@ -1,4 +1,8 @@
-package com.lsystem;
+package com.lsystem.control;
+
+import com.lsystem.model.RecursiveLsys;
+import com.lsystem.view.MenuPanel;
+import com.lsystem.view.StaticView;
 
 public class UserInputFactory {
 

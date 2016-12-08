@@ -1,4 +1,8 @@
-package com.lsystem;
+package com.lsystem.view;
+
+import com.lsystem.control.ExpandNodeMouseListener;
+import com.lsystem.model.RecursiveLsys;
+import com.lsystem.control.ButtonExpandListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,9 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.lsystem.StaticView.MENU_WIDTH;
-import static com.lsystem.StaticView.screenSize;
-import static com.lsystem.Texture.*;
+import static com.lsystem.view.Texture.*;
 
 public class DynamicView extends JPanel {
 
@@ -26,9 +28,9 @@ public class DynamicView extends JPanel {
     ExpandNodeMouseListener expandNodeMouseListener;
     private Map<NonTerminal, Point> testHashMap;
 
-    static int screenHeight = (int) screenSize.getHeight();
-    static int screenWidth = (int) screenSize.getWidth();
-    static int middleX = (screenWidth - MENU_WIDTH) / 2;
+    static int screenHeight = (int) StaticView.screenSize.getHeight();
+    static int screenWidth = (int) StaticView.screenSize.getWidth();
+    static int middleX = (screenWidth - StaticView.MENU_WIDTH) / 2;
     private static final int BRANCH_HEIGHT = -40;
     AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX, screenHeight - 100);
     ArrayList<AffineTransform> subTrees = new ArrayList<AffineTransform>();
@@ -37,7 +39,6 @@ public class DynamicView extends JPanel {
     public DynamicView(RecursiveLsys lsys) {
         super();
         this.lsys = lsys;
-        System.out.println("Jeg er axiomet: " + lsys.getTree());
 
         makeMouseListener();
         testHashMap = new HashMap<>();
@@ -99,7 +100,7 @@ public class DynamicView extends JPanel {
                     pop(turtle);
                     break;
                 default:
-                    System.out.println("Char not in alphabet");
+                    System.out.println("Char " + currentCheck + " not in alphabet");
                     break;
             }
         }
@@ -181,15 +182,15 @@ public class DynamicView extends JPanel {
         for (NonTerminal nt : listOfNT) {
 
             if (nt.getNtCircle().contains(mouseX, mouseY) == true) {
-                System.out.println("jeg er inde i en cirkel");
+
                 ntArray.add(nt);
             } else {
 
-                System.out.println("Du har klikket ved siden af.");
+
             }
 
         }
-        System.out.println(ntArray.size());
+
         if (ntArray.isEmpty() == false) {
             expandNode(ntArray);
         }

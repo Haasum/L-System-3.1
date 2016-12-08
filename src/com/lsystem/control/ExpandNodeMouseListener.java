@@ -1,4 +1,6 @@
-package com.lsystem;
+package com.lsystem.control;
+
+import com.lsystem.view.DynamicView;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -21,7 +23,6 @@ public class ExpandNodeMouseListener implements MouseListener{ //TODO: ændre na
         int y = e.getY();
 
         mouseP = new Point(x,y);
-        System.out.println("Clicked");
         dynamicView.ntClicked(x, y);
 
     }

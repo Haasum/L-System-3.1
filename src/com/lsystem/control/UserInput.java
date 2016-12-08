@@ -1,4 +1,6 @@
-package com.lsystem;
+package com.lsystem.control;
+
+import com.lsystem.model.RecursiveLsys;
 
 public interface UserInput {
 

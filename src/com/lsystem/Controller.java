@@ -1,5 +1,11 @@
 package com.lsystem;
 
+import com.lsystem.control.ExpandKeyListener;
+import com.lsystem.control.Txt;
+import com.lsystem.model.Grammatik;
+import com.lsystem.model.RecursiveLsys;
+import com.lsystem.view.StaticView;
+
 import java.io.IOException;
 
 public class Controller {
@@ -10,12 +16,10 @@ public class Controller {
         Txt textFileReader = new Txt();
         String txtFileString = textFileReader.checkTxt();
 
-        System.out.println("test txt: " + txtFileString);
 
         Grammatik grammatik = new Grammatik(txtFileString);
         RecursiveLsys lsys = new RecursiveLsys(grammatik);
 
-        //UserInput userInput;
         StaticView staticView = new StaticView(lsys);
 
         ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsys);
