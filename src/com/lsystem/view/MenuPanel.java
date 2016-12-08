@@ -1,14 +1,13 @@
 package com.lsystem.view;
 
-import com.lsystem.model.RecursiveLsystem;
 import com.lsystem.control.UserInput;
 import com.lsystem.control.UserInputFactory;
+import com.lsystem.model.RecursiveLsystem;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.util.Map;
 
 
@@ -19,10 +18,11 @@ public class MenuPanel extends JPanel {
     private Map<JButton,InputType> inputTypeMap; //TODO: bruges til leapmotion - må ikke slettes
     UserInput userInput;
     StaticView staticView;
+    JPanel dynamicView;
 
-
-    public MenuPanel(RecursiveLsystem lsys, StaticView staticView) {
+    public MenuPanel(RecursiveLsystem lsys, JPanel dynamicView, StaticView staticView) {
         this.staticView = staticView;
+        this.dynamicView = dynamicView;
         this.lsys = lsys;
         makeTextureButtons();
         makeInputButtons();
@@ -42,27 +42,18 @@ public class MenuPanel extends JPanel {
             inputbutton.setBackground(Color.darkGray);
             inputbutton.setSize(50, 50);
             this.add(inputbutton);
-        //    inputTypeMap.put(inputbutton,k);
 
             inputbutton.addActionListener(new ActionListener() {
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     UserInputFactory userInputFactory = new UserInputFactory(lsys);
                     userInput = userInputFactory.fetchUserInput(k);
-                    addNewListener(userInput);
+                    staticView.addListeners(userInput);
                 }
             });
         }
-
     }
 
-    private void addNewListener(UserInput userInput) { //TODO: leapmotion
-        System.out.println("den listener der skal køre er " + userInput);
-
-        staticView.addKeyListener((KeyListener) userInput);
-      //  staticView.addListeners();
-    }
 
 
     private void makeTextureButtons() {

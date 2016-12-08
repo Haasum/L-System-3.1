@@ -19,15 +19,12 @@ public class UserInputFactory {
 
         switch (inputType) {
             case LEAPLISTENER:
-                System.out.println("Leap er nice nu");
                 break;
-
             case KEYLISTENER:
-                System.out.println("Jeg har sgu fundet mig en keylistener");
                 return new ExpandKeyListener(lsys);
 
             default:
-                System.out.println("I can't detect any user input, please try again");
+                return null;
         }
         return null;
     }

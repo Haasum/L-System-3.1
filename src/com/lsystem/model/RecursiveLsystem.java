@@ -23,28 +23,23 @@ public class RecursiveLsystem {
 
     }
     public String expand(String s, int genNo) {
-
         String next = "";
-
         if (genNo == 0) {
             return s;
         }
-
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-
             String ruleToExpand = getRuleInRuleset(c);
-
             if (ruleToExpand != "" && ruleToExpand != null) {
                 next += expand(ruleToExpand, genNo-1  );
             }
             else if (ruleToExpand == "" || ruleToExpand == null) {
                 next += c;
-
             }
         }
         return next;
     }
+
     public String getRuleInRuleset(char c) {
         String s = "";
 

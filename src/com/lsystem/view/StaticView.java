@@ -1,10 +1,11 @@
 package com.lsystem.view;
 
-import com.lsystem.control.ExpandKeyListener;
+import com.lsystem.control.UserInput;
 import com.lsystem.model.RecursiveLsystem;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 
 import static com.lsystem.view.DynamicView.screenHeight;
 import static com.lsystem.view.DynamicView.screenWidth;
@@ -51,7 +52,7 @@ public class StaticView extends JFrame {
     }
 
     private void drawMenuPanel() {
-        menuPanel = new MenuPanel(lsystem, this);
+        menuPanel = new MenuPanel(lsystem, dynamicView, this);
         menuPanel.setVisible(true);
         menuPanel.setSize(MENU_WIDTH, screenHeight);
         menuPanel.setBackground(new Color(255,255,255));
@@ -60,9 +61,12 @@ public class StaticView extends JFrame {
         this.add(menuPanel);
     }
 
-    public void addListeners(ExpandKeyListener expandKeyListener){
+    public void addListeners(UserInput userInput){
 
-        dynamicView.addKeyListener(expandKeyListener);
+        this.addKeyListener((KeyListener) userInput);
+        dynamicView.addKeyListener((KeyListener) userInput);
+
+
     }
 }
 

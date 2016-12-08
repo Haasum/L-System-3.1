@@ -1,6 +1,5 @@
 package com.lsystem;
 
-import com.lsystem.control.ExpandKeyListener;
 import com.lsystem.control.TextfileReader;
 import com.lsystem.model.Grammatik;
 import com.lsystem.model.RecursiveLsystem;
@@ -20,15 +19,18 @@ public class Controller {
 
         StaticView staticView = new StaticView(lsystem);
 
-        ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsystem);
-        staticView.addKeyListener(expandKeyListener);
-        staticView.addListeners(expandKeyListener);
+
+
+//        ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsystem);
+//        staticView.addKeyListener(expandKeyListener);
+//        staticView.addListeners(expandKeyListener);
 
 /*
 TODO: følgende er det der kalder leapListener. udkommenteret i denne version
         LeapListener listener = new LeapListener(controller2, lsystem);
         controller2.enableGesture(Gesture.Type.TYPE_SWIPE);//  controller.enableGesture( Gesture.Type.TYPE_CIRCLE );
         controller2.addListener(listener);
+
         System.out.println("Press Enter to quit..."); // Keep this process running until Enter is pressed
         try {
             System.in.read();
