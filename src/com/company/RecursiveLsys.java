@@ -13,6 +13,7 @@ public class RecursiveLsys {
     int genNo1 = 0;
     String tree;
     ArrayList<String> rulesForRand;
+    int number = 0;;
 
 //TODO i recsys: der skal være en metode: stopCondition()
 //TODO i recsys: der skal være en metode: isPrimitive()
@@ -32,6 +33,7 @@ public class RecursiveLsys {
 
         String next = "";
 
+
         if (genNo1 == 0) {
             return s;
         }
@@ -42,10 +44,11 @@ public class RecursiveLsys {
             String expandRule = checkLetterInAlpha(curr);
 
             if (expandRule != "" && expandRule != null) {
-                next += expand(expandRule, genNo1 - 1);
+                next += expand(expandRule, genNo1-1  );
             }
             else if (expandRule == "" || expandRule == null) {
                 next += curr;
+
             }
         }
         return next;
