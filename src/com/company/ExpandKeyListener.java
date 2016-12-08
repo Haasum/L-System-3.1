@@ -9,7 +9,8 @@ public class ExpandKeyListener implements KeyListener, UserInput {
     RecursiveLsys lsys;
     String treeToExpand;
     String expandedTree;
-    int Number =3;
+    int currGenNo =3;
+    int maxGenNo = 10;
 
     public ExpandKeyListener(RecursiveLsys lsys){
         this.lsys = lsys;
@@ -38,8 +39,8 @@ public class ExpandKeyListener implements KeyListener, UserInput {
 
     @Override
     public void expandGeneration(RecursiveLsys lsys) {
-        if (Number <=7){
-            Number++;
+        if (currGenNo <= maxGenNo){
+            currGenNo++;
         treeToExpand = lsys.getTree();
         expandedTree = lsys.expand(treeToExpand,1);
         lsys.setTree(expandedTree);}
