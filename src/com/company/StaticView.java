@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 
 public class StaticView extends JFrame {
     static Dimension screenSize;
-    JPanel turtle;
+    JPanel dynamicView;
     RecursiveLsys lsys;
     Texture texture;
 
@@ -22,12 +22,12 @@ public class StaticView extends JFrame {
 
     private void drawMainPanel() {
 
-        turtle = new DynamicView(lsys);
-        turtle.setVisible(true);
-        turtle.setSize(screenSize);
-        turtle.setBackground(new Color(99, 125, 150));
-        turtle.setLayout(null);
-        this.add(turtle, BorderLayout.CENTER);
+        dynamicView = new DynamicView(lsys);
+        dynamicView.setVisible(true);
+        dynamicView.setSize(screenSize);
+        dynamicView.setBackground(new Color(99, 125, 150));
+        dynamicView.setLayout(null);
+        this.add(dynamicView, BorderLayout.CENTER);
 
     }
 
@@ -37,17 +37,17 @@ public class StaticView extends JFrame {
         setSize(screenSize);
         setVisible(true);
         setLayout(new BorderLayout());
-        setLocation(500,0);
+        setLocation(0,0);
         //setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public void addExpandKeyListener(KeyListener listener){
-        turtle.addKeyListener(listener);
+        dynamicView.addKeyListener(listener);
     }
 
     public void addListeners(KeyListener keyListener){
-        turtle.addKeyListener(keyListener);
+        dynamicView.addKeyListener(keyListener);
     }
     }
 

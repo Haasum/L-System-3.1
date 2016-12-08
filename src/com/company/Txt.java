@@ -5,9 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * Created by MasterWillis on 03/12/2016.
- */
 public class Txt {
 
     public Txt() throws IOException {
@@ -39,7 +36,4 @@ public class Txt {
         return null;
     }
 
-
-    //public String getTxtInput() { //her er outputtet samlet efter randommetoder er kørt
-        //return this.inputFromTxt; // når input fra textFil skal virke
 }

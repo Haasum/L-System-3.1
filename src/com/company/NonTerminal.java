@@ -43,7 +43,7 @@ public class NonTerminal {
         g2dd.fill(ntCircle);
         g2dd.draw(ntCircle);
 
-       // turtle.add(ntCircle);
+       // dynamicView.add(ntCircle);
     }
 
 
