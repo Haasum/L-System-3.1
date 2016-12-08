@@ -9,7 +9,6 @@ import java.io.IOException;
  * Created by MasterWillis on 03/12/2016.
  */
 public class Txt {
-    //public String inputFromTxt = "A:F[+A][-A],b:ACA";
 
     public Txt() throws IOException {
         checkTxt();
@@ -18,7 +17,7 @@ public class Txt {
     public String checkTxt() throws IOException {
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("src//TextfilePackage//txt.txt"));
+            br = new BufferedReader(new FileReader("src//TextfilePackage//txt4.txt"));
             StringBuilder sb = new StringBuilder();
             String line;
             line = br.readLine();

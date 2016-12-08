@@ -13,13 +13,13 @@ import java.util.Map;
 import static com.company.StaticView.screenSize;
 import static com.company.Texture.*;
 
-public class Turtle extends JPanel{
+public class DynamicView extends JPanel{
 
     //private final
     ButtonExpandListener buttonListener;
     RecursiveLsys lsys;
+    Graphics2D turtle;
     Graphics2D g2d;
-    Graphics2D g2dd;
     Texture texture;
     ArrayList<NonTerminal> listOfNT;
     NonTerminal nt;
@@ -31,13 +31,13 @@ public class Turtle extends JPanel{
     static int screenWidth = (int) screenSize.getWidth();
     static int middleX = screenWidth/2;
     static int screenHeight = (int) screenSize.getHeight();
-    private static final int BRANCH_HEIGHT = -50;
-    AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX,screenHeight-60);
+    private static final int BRANCH_HEIGHT = -15;
+    AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX,screenHeight-160);
     ArrayList<AffineTransform> subTrees = new ArrayList<AffineTransform>();
 
     ArrayList<JButton> buttonList = new ArrayList<JButton>();
 
-    public Turtle(RecursiveLsys lsys) {
+    public DynamicView(RecursiveLsys lsys) {
         super();
         setFocusable(true);
         this.lsys = lsys;
@@ -71,17 +71,12 @@ public class Turtle extends JPanel{
         testHashMap.clear();
         super.paintComponent(g);
 
+        turtle = (Graphics2D) g.create();
         g2d = (Graphics2D) g.create();
-        g2dd = (Graphics2D) g.create();
 
+        makeBackground(turtle);
 
-
-
-        makeBackground(g2d);
-
-        g2dd.fillRect(10,10,50,50);
-
-        g2d.setTransform(originalTrans);
+        turtle.setTransform(originalTrans);
 
 
         for (int i = 0; i < lsys.getTree().length(); i++) {
@@ -89,26 +84,31 @@ public class Turtle extends JPanel{
 
             switch (currentCheck) {
                 case 'F':
-                    growBranch(g2d);
+                    growBranch(turtle);
                     break;
                 case 'K': // TODO: skal nok være if sætning, hvis det er det første F, skal det være en stamme. bare et forslag. hilsen naja
-                    makeLog(g2d);
+                    makeLog(turtle);
                     break;
                 case 'A':
-                    drawNonTerminal(g2d, g2dd);
-               //     interpretNonTerminal(g2d, i,  currentCheck);
+                    drawNonTerminal(turtle, g2d);
+                    break;
+                case 'B':
+                    drawNonTerminal(turtle, g2d);
+                    break;
+                case 'C':
+                    drawNonTerminal(turtle, g2d);
                     break;
                 case '+':
-                    rotateRight(g2d);
+                    rotateRight(turtle);
                     break;
                 case '-':
-                    rotateLeft(g2d);
+                    rotateLeft(turtle);
                     break;
                 case '[':
-                    push(g2d);
+                    push(turtle);
                     break;
                 case ']':
-                    pop(g2d);
+                    pop(turtle);
                     break;
                 default:
                     System.out.println("Char not in alphabet");
@@ -120,9 +120,9 @@ public class Turtle extends JPanel{
     }
 
 
-    private void interpretNonTerminal(Graphics2D g2d, int i, char a) {
+    private void interpretNonTerminal(Graphics2D turtle, int i, char a) {
 
-        AffineTransform curTf = g2d.getTransform();
+        AffineTransform curTf = turtle.getTransform();
         int x = (int) curTf.getTranslateX();
         int y = (int) curTf.getTranslateY();
         JButton but = new JButton();
@@ -133,40 +133,40 @@ public class Turtle extends JPanel{
         but.setBounds(x,y,10,10);
         add(but);
     }
-    private void push(Graphics2D g2d) {
-        subTrees.add(g2d.getTransform());
+    private void push(Graphics2D turtle) {
+        subTrees.add(turtle.getTransform());
     }
-    private void pop(Graphics2D g2d) {
+    private void pop(Graphics2D turtle) {
         AffineTransform t = subTrees.get(subTrees.size()-1);
-        g2d.setTransform(t);
+        turtle.setTransform(t);
         subTrees.remove(subTrees.size()-1);
     }
-    private void growBranch(Graphics2D g2d) {
-        g2d.setStroke(new BasicStroke(2.0f));
+    private void growBranch(Graphics2D turtle) {
+        turtle.setStroke(new BasicStroke(2.0f));
 
-        g2d.drawLine(0,0,0, BRANCH_HEIGHT);
-        g2d.translate(0,BRANCH_HEIGHT);
-      //  drawLeafs(g2d); //draw Leafs bliver ikke kaldt i denne version, da vi skal rette nogle ting
+        turtle.drawLine(0,0,0, BRANCH_HEIGHT);
+        turtle.translate(0,BRANCH_HEIGHT);
+      //  drawLeafs(turtle); //draw Leafs bliver ikke kaldt i denne version, da vi skal rette nogle ting
     }
 
-    private void drawLeafs(Graphics2D g2d) {
+    private void drawLeafs(Graphics2D turtle) {
         //TODO: skal være object der får xpos og ypos for leaf ind. klasse til det er lavet ("Leaf")
-        g2d.drawImage(leafImg, 0,-38,this);
-        g2d.drawImage(leafImg, 0,-53,this);
-        g2d.drawImage(leafImg,0,-17,this);
-        g2d.drawImage(leafImg2, -27,-22,this);
-        g2d.drawImage(leafImg2, -27,-40,this);
-        g2d.drawImage(leafImg2, -27,-55,this);
-        g2d.drawImage(leafHigh,-15,BRANCH_HEIGHT-4,this);
+        turtle.drawImage(leafImg, 0,-38,this);
+        turtle.drawImage(leafImg, 0,-53,this);
+        turtle.drawImage(leafImg,0,-17,this);
+        turtle.drawImage(leafImg2, -27,-22,this);
+        turtle.drawImage(leafImg2, -27,-40,this);
+        turtle.drawImage(leafImg2, -27,-55,this);
+        turtle.drawImage(leafHigh,-15,BRANCH_HEIGHT-4,this);
 
     }
-    private void rotateLeft(Graphics2D g2d) {
-        g2d.rotate(Math.PI/6);
+    private void rotateLeft(Graphics2D turtle) {
+        turtle.rotate(Math.PI/8);
     }
-    private void rotateRight(Graphics2D g2d) {
-        g2d.rotate(-Math.PI/6);
+    private void rotateRight(Graphics2D turtle) {
+        turtle.rotate(-Math.PI/8);
     }
-    private void makeLog(Graphics2D g2d) {
+    private void makeLog(Graphics2D turtle) {
         GeneralPath logShape = new GeneralPath();
         final double points[][]= {
                 { -2, -250}, {2, -250},
@@ -179,8 +179,8 @@ public class Turtle extends JPanel{
 
         logShape.closePath();
 
-        g2d.fill(logShape);
-        g2d.translate(0,-250);
+        turtle.fill(logShape);
+        turtle.translate(0,-250);
 
 
     }
@@ -219,8 +219,8 @@ public class Turtle extends JPanel{
 
     }
 
-    public void drawNonTerminal(Graphics2D g2d, Graphics2D g2dd){
-        AffineTransform newTransform = g2d.getTransform();
+    public void drawNonTerminal(Graphics2D turtle, Graphics2D g2dd){
+        AffineTransform newTransform = turtle.getTransform();
         nt = new NonTerminal(g2dd, newTransform, this);//, affineTransform);
         listOfNT.add(nt);
     }
@@ -238,19 +238,19 @@ public class Turtle extends JPanel{
                 expandNode(expandTrans);
             }
             else {
-                System.out.println("none");
+
             }
         }
 
     }
 
     private void expandNode(AffineTransform expandTrans) {
-        g2d.setTransform(expandTrans);
+        turtle.setTransform(expandTrans);
     }
 
-    /*private void drawNonTerminal(Graphics2D g2d) {
-        AffineTransform tf = g2d.getTransform();
-        NonTerminal nt = new NonTerminal(g2d, tf);
+    /*private void drawNonTerminal(Graphics2D turtle) {
+        AffineTransform tf = turtle.getTransform();
+        NonTerminal nt = new NonTerminal(turtle, tf);
         testHashMap.put(nt, nt.getP());
         setTestHashMap(testHashMap);
 

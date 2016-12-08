@@ -22,7 +22,7 @@ public class StaticView extends JFrame {
 
     private void drawMainPanel() {
 
-        turtle = new Turtle(lsys);
+        turtle = new DynamicView(lsys);
         turtle.setVisible(true);
         turtle.setSize(screenSize);
         turtle.setBackground(new Color(99, 125, 150));

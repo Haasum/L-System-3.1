@@ -11,14 +11,14 @@ public class NonTerminal {
     private int y;
     private Point p;
     Ellipse2D ntCircle;
-    Turtle turtle;
+    DynamicView dynamicView;
     Point realX;
     static final int CIRCLE_RADIUS = 5;
 
-    public NonTerminal(Graphics2D g2dd, AffineTransform affineTransform, Turtle turtle){
+    public NonTerminal(Graphics2D g2dd, AffineTransform affineTransform, DynamicView dynamicView){
         this.g2dd = g2dd;
         this.setAffineTransform(affineTransform);
-        this.turtle = turtle;
+        this.dynamicView = dynamicView;
         setScreenPosition();
         drawButton();
         setRealX();

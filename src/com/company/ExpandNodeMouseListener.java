@@ -9,13 +9,13 @@ import java.awt.event.MouseListener;
  */
 public class ExpandNodeMouseListener implements MouseListener{ //TODO: ændre navn til NonTerminalMouseListener
 
-    Turtle turtle;
+    DynamicView dynamicView;
     Point mouseP;
     Graphics2D g2d;
 
-    public ExpandNodeMouseListener(Turtle turtle){
-        this.turtle = turtle;
-        turtle.addMouseListener(this);
+    public ExpandNodeMouseListener(DynamicView dynamicView){
+        this.dynamicView = dynamicView;
+        dynamicView.addMouseListener(this);
         //System.out.println(turtle.getTestHashMap());
     }
 
@@ -27,7 +27,7 @@ public class ExpandNodeMouseListener implements MouseListener{ //TODO: ændre na
 
         mouseP = new Point(x,y);
         System.out.println("Clicked");
-        turtle.ntClicked(x, y);
+        dynamicView.ntClicked(x, y);
 
        /* Collection<Point> nonTerminalPoints = turtle.getTestHashMap().values();
         for (Point p : nonTerminalPoints ) {
