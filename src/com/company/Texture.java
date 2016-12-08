@@ -24,7 +24,6 @@ public class Texture {
         if (shouldLoad ==  true) {
             loadImages();
             barkTex = new TexturePaint( this.barkImg, new Rectangle(0, 0, 150, 150));
-            // barkTex = new TexturePaint(this.barkImg, new Rectangle(0, 0, 150, 150));
         }
         else {
             setImagestoNull();

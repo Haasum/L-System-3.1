@@ -2,9 +2,6 @@ package com.company;
 
 import java.util.ArrayList;
 
-/**
- * Created by MasterWillis on 03/12/2016.
- */
 public class Grammatik {
     ArrayList<Rule> ruleset;
     char currentLetter;
@@ -53,9 +50,9 @@ public class Grammatik {
             }
         }
     }
-    private void addRule() { //reglerne sendes. det er også her de skal gemmes
+    private void addRule() { //rules are send and saved in a ruleset array.
         rule = new Rule(currentLetter, currRule);
         ruleset.add(rule);
-        currRule = ""; //currRule nulstilles
+        currRule = ""; //currRule is reset
     }
 }

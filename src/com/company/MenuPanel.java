@@ -7,27 +7,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.Map;
 
-/**
- * Created by naja on 08-12-2016.
- */
+
 public class MenuPanel extends JPanel {
     RecursiveLsys lsys;
     Texture texture;
     public enum InputType {LEAPLISTENER, KEYLISTENER};
-    private Map<JButton,InputType> inputTypeMap;
+    private Map<JButton,InputType> inputTypeMap; //TODO: bruges til leapmotion - må ikke slettes
     UserInput userInput;
     StaticView staticView;
-    DynamicView dynamicView;
 
 
     public MenuPanel(RecursiveLsys lsys, StaticView staticView) {
         this.staticView = staticView;
         this.lsys = lsys;
-        makeViewButtons();
+        makeTextureButtons();
         makeInputButtons();
     }
 
-    private void makeInputButtons() {
+    private void makeInputButtons() { //TODO: Til leapmotion - må ikke slettes
         JLabel inputLabel = new JLabel("Input Type:");
         inputLabel.setLocation(10, 220);
         inputLabel.setSize(100, 30);
@@ -56,7 +53,7 @@ public class MenuPanel extends JPanel {
 
     }
 
-    private void addNewListener(UserInput userInput) {
+    private void addNewListener(UserInput userInput) { //TODO: leapmotion
         System.out.println("den listener der skal køre er " + userInput);
 
         staticView.addKeyListener((KeyListener) userInput);
@@ -64,7 +61,7 @@ public class MenuPanel extends JPanel {
     }
 
 
-    private void makeViewButtons() {
+    private void makeTextureButtons() {
 
         JLabel textureLabel = new JLabel("Texture on/off");
         textureLabel.setLocation(10, 50);

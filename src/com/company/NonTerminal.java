@@ -17,7 +17,7 @@ public class NonTerminal {
     private int i;
     private char c;
 
-    public NonTerminal(Graphics2D g2dd, AffineTransform affineTransform, DynamicView dynamicView, int i, char c){
+    public NonTerminal(Graphics2D g2dd, AffineTransform affineTransform, DynamicView dynamicView, int i, char c) {
         this.g2dd = g2dd;
         this.setAffineTransform(affineTransform);
         this.dynamicView = dynamicView;
@@ -25,44 +25,30 @@ public class NonTerminal {
         this.i = i;
         setScreenPosition();
         drawButton();
-        setRealX();
     }
 
 
-    public void setScreenPosition(){
+    public void setScreenPosition() {
         x = (int) getAffineTransform().getTranslateX();
         y = (int) getAffineTransform().getTranslateY();
         p = new Point(x, y);
 
     }
 
-    private void setRealX() {
-        realX = p.getLocation();
-    }
 
     private void drawButton() {
         ntCircle = new Ellipse2D.Float();
-        ntCircle.setFrameFromCenter(x,y,x+CIRCLE_RADIUS,y+CIRCLE_RADIUS);
+        ntCircle.setFrameFromCenter(x, y, x + CIRCLE_RADIUS, y + CIRCLE_RADIUS);
         g2dd.setPaint(Color.magenta);
         g2dd.fill(ntCircle);
         g2dd.draw(ntCircle);
 
-       // dynamicView.add(ntCircle);
     }
 
-
-    private void setScreenPos() {
-
-
-    }
-
-    public Ellipse2D getNtCircle(){
+    public Ellipse2D getNtCircle() {
         return ntCircle;
     }
 
-    public Point getrealX() {
-        return this.realX;
-    }
 
     public AffineTransform getAffineTransform() {
         return affineTransform;
@@ -80,29 +66,5 @@ public class NonTerminal {
         return c;
     }
 
-
-/*    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public Point getP() {
-        return p;
-    }
-
-    public void setP(Point p) {
-        this.p = p;
-    }*/
 }
 
