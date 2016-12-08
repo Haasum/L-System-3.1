@@ -18,13 +18,13 @@ public class StaticView extends JFrame {
     Texture texture;
     final static int MENU_WIDTH = 100;
 
+
     public StaticView(RecursiveLsys lsys){
         this.lsys = lsys;
         drawFrame();
 
         drawMainPanel();
         drawMenuPanel();
-
 
         texture = new Texture(true);
 
@@ -62,13 +62,9 @@ public class StaticView extends JFrame {
         this.add(menuPanel);
     }
 
-    public void addExpandKeyListener(KeyListener listener){
-        dynamicView.addKeyListener(listener);
-    }
-
     public void addListeners(ExpandKeyListener expandKeyListener){
 
         dynamicView.addKeyListener(expandKeyListener);
     }
-    }
+}
 

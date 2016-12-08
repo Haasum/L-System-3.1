@@ -12,12 +12,11 @@ public class Txt {
     }
 
     public String checkTxt() throws IOException {
-        BufferedReader br = null;
+        BufferedReader br;
         try {
             br = new BufferedReader(new FileReader("src//TextfilePackage//txt.txt"));
             StringBuilder sb = new StringBuilder();
-            String line;
-            line = br.readLine();
+            String line = br.readLine();
             while (line != null) {
                 sb.append(line);
                 sb.append(System.lineSeparator());

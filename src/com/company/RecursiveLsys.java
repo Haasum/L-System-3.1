@@ -2,9 +2,6 @@ package com.company;
 
 import java.util.ArrayList;
 
-/**
- * Created by MasterWillis on 03/12/2016.
- */
 public class RecursiveLsys {
     ArrayList<Rule> ruleset;
     Grammatik grammatik;
@@ -13,11 +10,8 @@ public class RecursiveLsys {
     int genNo1 = 0;
     String tree;
     ArrayList<String> rulesForRand;
-    int number = 0;;
 
 //TODO i recsys: der skal være en metode: stopCondition()
-//TODO i recsys: der skal være en metode: isPrimitive()
-//TODO i recsys: Den expander første omgang forkert
 
     public RecursiveLsys(Grammatik grammatik) {
 
@@ -73,12 +67,10 @@ public class RecursiveLsys {
 
     public void setTree(String tree) {
         this.tree = tree;
-        System.out.println("Dette er setTree" + tree);
     }
 
     public String getTree(){
         return tree;
-        //return "K[+F[+A]][-F[+A]]";
     }
 
 }

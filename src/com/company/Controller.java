@@ -15,6 +15,7 @@ public class Controller {
         Grammatik grammatik = new Grammatik(txtFileString);
         RecursiveLsys lsys = new RecursiveLsys(grammatik);
 
+        //UserInput userInput;
         StaticView staticView = new StaticView(lsys);
 
         ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsys);
