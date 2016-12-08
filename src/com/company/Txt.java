@@ -17,7 +17,7 @@ public class Txt {
     public String checkTxt() throws IOException {
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("src//TextfilePackage//txt4.txt"));
+            br = new BufferedReader(new FileReader("src//TextfilePackage//txt.txt"));
             StringBuilder sb = new StringBuilder();
             String line;
             line = br.readLine();
