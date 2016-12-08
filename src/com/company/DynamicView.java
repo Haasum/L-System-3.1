@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.company.StaticView.MENU_WIDTH;
 import static com.company.StaticView.screenSize;
 import static com.company.Texture.*;
 
@@ -29,7 +30,7 @@ public class DynamicView extends JPanel{
 
 
     static int screenWidth = (int) screenSize.getWidth();
-    static int middleX = screenWidth/2;
+    static int middleX = (screenWidth-MENU_WIDTH)/2;
     static int screenHeight = (int) screenSize.getHeight();
     private static final int BRANCH_HEIGHT = -15;
     AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX,screenHeight-160);
@@ -42,7 +43,7 @@ public class DynamicView extends JPanel{
         setFocusable(true);
         this.lsys = lsys;
         System.out.println("Jeg er træet, der tegnes: "+lsys.getTree());
-        makeButtons();
+
         makeMouseListener();
         testHashMap = new HashMap<>();
         listOfNT = new ArrayList<NonTerminal>();
@@ -184,33 +185,7 @@ public class DynamicView extends JPanel{
 
 
     }
-    private void makeButtons() {
-        Button leafbuttonGrow = new Button();
-        leafbuttonGrow.setLocation(10, 100);
-        leafbuttonGrow.setBackground(Color.green);
-        leafbuttonGrow.setSize(50, 50);
-        this.add(leafbuttonGrow);
 
-        leafbuttonGrow.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("put texture on tree");
-                Texture texture = new Texture(true);
-            }
-        });
-        Button leafbuttonKill = new Button();
-        leafbuttonKill.setLocation(10, 160);
-        leafbuttonKill.setBackground(Color.black);
-        leafbuttonKill.setSize(50, 50);
-        this.add(leafbuttonKill);
-        leafbuttonKill.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("remove texture on tree");
-                Texture texture = new Texture(false);
-            }
-        });
-    }
     private void makeBackground(Graphics2D turtle) {
         turtle.drawImage(backImg,0,0,screenWidth,screenHeight, this); //backgroundIMG. placed on position 0,0 - and scaled to fit screensize
         turtle.setPaint(Texture.soilTex); //sets the soil texture

@@ -4,18 +4,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
 
+import static com.company.DynamicView.screenHeight;
+import static com.company.DynamicView.screenWidth;
+
 
 public class StaticView extends JFrame {
     static Dimension screenSize;
     JPanel dynamicView;
+    MenuPanel menuPanel;
     RecursiveLsys lsys;
     Texture texture;
+    final static int MENU_WIDTH = 100;
 
     public StaticView(RecursiveLsys lsys){
         this.lsys = lsys;
         drawFrame();
 
         drawMainPanel();
+        drawMenuPanel();
         texture = new Texture(true);
 
     }
@@ -24,10 +30,11 @@ public class StaticView extends JFrame {
 
         dynamicView = new DynamicView(lsys);
         dynamicView.setVisible(true);
-        dynamicView.setSize(screenSize);
+        dynamicView.setSize(screenWidth-MENU_WIDTH,screenHeight);
         dynamicView.setBackground(new Color(99, 125, 150));
         dynamicView.setLayout(null);
-        this.add(dynamicView, BorderLayout.CENTER);
+        dynamicView.setLocation(MENU_WIDTH,0);
+        this.add(dynamicView);
 
     }
 
@@ -37,9 +44,19 @@ public class StaticView extends JFrame {
         setSize(screenSize);
         setVisible(true);
         setLayout(new BorderLayout());
-        setLocation(0,0);
-        //setLocationRelativeTo(null);
+        //setLocation(0,0);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    private void drawMenuPanel() {
+        menuPanel = new MenuPanel(lsys);
+        menuPanel.setVisible(true);
+        menuPanel.setSize(MENU_WIDTH, screenHeight);
+        menuPanel.setBackground(new Color(255,255,255));
+        menuPanel.setLayout(null);
+        menuPanel.setLocation(0,0);
+        this.add(menuPanel);
     }
 
     public void addExpandKeyListener(KeyListener listener){
