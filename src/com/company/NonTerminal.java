@@ -5,40 +5,69 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 
 public class NonTerminal {
-    Graphics2D g2d;
-    AffineTransform affineTransform;
+    Graphics2D g2dd;
+    private AffineTransform affineTransform;
     private int x;
     private int y;
     private Point p;
     Ellipse2D ntCircle;
+    Turtle turtle;
+    Point realX;
 
-    public NonTerminal(Graphics2D g2d, AffineTransform affineTransform){
-        this.g2d = g2d;
-        this.affineTransform = affineTransform;
+    public NonTerminal(Graphics2D g2dd, AffineTransform affineTransform, Turtle turtle){
+        this.g2dd = g2dd;
+        this.setAffineTransform(affineTransform);
+        this.turtle = turtle;
         setScreenPosition();
         drawButton();
+        setRealX();
     }
+
 
     public void setScreenPosition(){
-        x = (int)affineTransform.getTranslateX();
-        y = (int)affineTransform.getTranslateY();
+        x = (int) getAffineTransform().getTranslateX();
+        y = (int) getAffineTransform().getTranslateY();
         p = new Point(x, y);
+
     }
 
-    private Point getScreenPosition() {
+    private void setRealX() {
+        realX = p.getLocation();
 
-        return p;
     }
 
     private void drawButton() {
         ntCircle = new Ellipse2D.Float();
-        ntCircle.setFrameFromCenter(x,y,15,15);
-        //ntCircle.setFrameFromCenter(0,0,15,15);
-        g2d.draw(ntCircle);
+        ntCircle.setFrameFromCenter(x,y,x+5,y+5);
+        g2dd.setPaint(Color.magenta);
+        g2dd.fill(ntCircle);
+        g2dd.draw(ntCircle);
+
+       // turtle.add(ntCircle);
     }
+
+
+    private void setScreenPos() {
+
+
+    }
+
     public Ellipse2D getNtCircle(){
         return ntCircle;
     }
+
+    public Point getrealX() {
+        return this.realX;
+    }
+
+    public AffineTransform getAffineTransform() {
+        return affineTransform;
+    }
+
+    public void setAffineTransform(AffineTransform affineTransform) {
+        this.affineTransform = affineTransform;
+    }
+
 
 /*    public int getX() {
         return x;

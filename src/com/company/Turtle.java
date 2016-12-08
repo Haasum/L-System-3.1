@@ -19,6 +19,7 @@ public class Turtle extends JPanel{
     ButtonExpandListener buttonListener;
     RecursiveLsys lsys;
     Graphics2D g2d;
+    Graphics2D g2dd;
     Texture texture;
     ArrayList<NonTerminal> listOfNT;
     NonTerminal nt;
@@ -53,9 +54,6 @@ public class Turtle extends JPanel{
     }
 
 
-
-
-
     public void getNonTerminals(){
         for (int i = 0; i < lsys.getTree().length(); i++) {
             char currentCheck = lsys.getTree().charAt(i);
@@ -72,9 +70,19 @@ public class Turtle extends JPanel{
         listOfNT.clear();
         testHashMap.clear();
         super.paintComponent(g);
+
         g2d = (Graphics2D) g.create();
+        g2dd = (Graphics2D) g.create();
+
+
+
+
         makeBackground(g2d);
+
+        g2dd.fillRect(10,10,50,50);
+
         g2d.setTransform(originalTrans);
+
 
         for (int i = 0; i < lsys.getTree().length(); i++) {
             char currentCheck = lsys.getTree().charAt(i);
@@ -82,14 +90,12 @@ public class Turtle extends JPanel{
             switch (currentCheck) {
                 case 'F':
                     growBranch(g2d);
-                    
                     break;
-                case 'K':
+                case 'K': // TODO: skal nok være if sætning, hvis det er det første F, skal det være en stamme. bare et forslag. hilsen naja
                     makeLog(g2d);
                     break;
                 case 'A':
-                    drawNonTerminal(g2d);
-
+                    drawNonTerminal(g2d, g2dd);
                //     interpretNonTerminal(g2d, i,  currentCheck);
                     break;
                 case '+':
@@ -140,7 +146,7 @@ public class Turtle extends JPanel{
 
         g2d.drawLine(0,0,0, BRANCH_HEIGHT);
         g2d.translate(0,BRANCH_HEIGHT);
-       // drawLeafs(g2d); //draw Leafs bliver ikke kaldt i denne version, da vi skal rette nogle ting
+      //  drawLeafs(g2d); //draw Leafs bliver ikke kaldt i denne version, da vi skal rette nogle ting
     }
 
     private void drawLeafs(Graphics2D g2d) {
@@ -213,26 +219,34 @@ public class Turtle extends JPanel{
 
     }
 
-    public void drawNonTerminal(Graphics2D g2d){
-        AffineTransform affineTransform = new AffineTransform();
-        nt = new NonTerminal(g2d, affineTransform);//, affineTransform);
+    public void drawNonTerminal(Graphics2D g2d, Graphics2D g2dd){
+        AffineTransform newTransform = new AffineTransform(g2d.getTransform());
+        nt = new NonTerminal(g2dd, newTransform, this);//, affineTransform);
         listOfNT.add(nt);
     }
 
     public void ntClicked(int mouseX, int mouseY) {
 
+
+
         for (NonTerminal nt : listOfNT ) {
-            System.out.println("Jeg er musse-x koordninat: "+mouseX+" jeg er cirkelcenter : ");
-            System.out.println("Jeg er musse-y koordninat: "+mouseY+" jeg er cirkelcenter : ");
-            System.out.println(nt.getNtCircle().getY());
+
+
             if (nt.getNtCircle().contains(mouseX,mouseY) == true){
-                System.out.println("works");
+                System.out.println("jeg er inde i en cirkel");
+                AffineTransform expandTrans = new AffineTransform(nt.getAffineTransform());
+                System.out.println("Affinetransform for denne cirkel er " + expandTrans);
+                expandNode(expandTrans);
             }
             else {
-                System.out.println("Jeg er ikke inde i cirklen");
+                System.out.println("none");
             }
         }
 
+    }
+
+    private void expandNode(AffineTransform expandTrans) {
+        g2d.setTransform(expandTrans);
     }
 
     /*private void drawNonTerminal(Graphics2D g2d) {
