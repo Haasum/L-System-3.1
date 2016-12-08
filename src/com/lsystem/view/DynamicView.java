@@ -1,16 +1,14 @@
 package com.lsystem.view;
 
 import com.lsystem.control.ExpandBudMouseListener;
-import com.lsystem.model.RecursiveLsystem;
 import com.lsystem.model.BudExpander;
+import com.lsystem.model.RecursiveLsystem;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import static com.lsystem.view.Texture.*;
 
@@ -25,7 +23,7 @@ public class DynamicView extends JPanel {
     ArrayList<NonTerminal> ntArray;
 
     ExpandBudMouseListener expandBudMouseListener;
-    private Map<NonTerminal, Point> testHashMap;
+
 
     static int screenHeight = (int) StaticView.SCREEN_SIZE.getHeight();
     static int screenWidth = (int) StaticView.SCREEN_SIZE.getWidth();
@@ -40,7 +38,7 @@ public class DynamicView extends JPanel {
         this.lsystem = lsystem;
 
         makeMouseListener();
-        testHashMap = new HashMap<>();
+
         listOfNT = new ArrayList<NonTerminal>();
 
     }
@@ -53,7 +51,7 @@ public class DynamicView extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         listOfNT.clear();
-        testHashMap.clear();
+
         super.paintComponent(g);
 
         turtle = (Graphics2D) g.create();
@@ -154,7 +152,6 @@ public class DynamicView extends JPanel {
             logShape.lineTo(points[k][0], points[k][1]);
 
         logShape.closePath();
-
         turtle.fill(logShape);
         turtle.translate(0, -200);
 
