@@ -23,6 +23,7 @@ public class DynamicView extends JPanel{
     ArrayList<NonTerminal> listOfNT;
     NonTerminal nt;
     ButtonExpandListener buttonExpandListener;
+    ArrayList<NonTerminal> ntArray;
 
     ExpandNodeMouseListener expandNodeMouseListener;
     private Map<NonTerminal,Point> testHashMap;
@@ -194,7 +195,7 @@ public class DynamicView extends JPanel{
 
     public void ntClicked(int mouseX, int mouseY) {
 
-        ArrayList<NonTerminal> ntArray = new ArrayList<NonTerminal>();
+        ntArray = new ArrayList<NonTerminal>();
 
 
         for (NonTerminal nt : listOfNT ) {
@@ -207,16 +208,20 @@ public class DynamicView extends JPanel{
             else {
 
             }
-            expandNode(ntArray);
+
         }
+
+        System.out.println(ntArray.size());
+        expandNode(ntArray);
 
     }
 
     private void expandNode(ArrayList ntArray) {
+        new ButtonExpandListener(ntArray, lsys);
 
-        for (int i = 0; i < ntArray.size(); i++) {
+    /*    for (int i = 0; i < ntArray.size(); i++) {
             new ButtonExpandListener((NonTerminal) ntArray.get(i), lsys);
-        }
+        } */
 
 
 
