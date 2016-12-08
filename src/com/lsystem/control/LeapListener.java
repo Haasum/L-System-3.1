@@ -36,12 +36,12 @@ public class LeapListener extends Listener {
     private float y;
     boolean isConnected;
 
-    RecursiveLsys lsys;
+    RecursiveLsystem lsys;
     String treeToExpand;
     String expandedTree;
 
 
-    public LeapListener(Controller leapController, RecursiveLsys lsys) {
+    public LeapListener(Controller leapController, RecursiveLsystem lsys) {
         this.lsys = lsys;
         System.out.println("is called");
         //onInit(leapController);
@@ -107,9 +107,9 @@ public class LeapListener extends Listener {
 
                 System.out.println("Det virker");
                 //TODO: her tilføjes expand agtig metode
-                treeToExpand = lsys.getTree();
+                treeToExpand = lsys.getTreeString();
                 expandedTree = lsys.expand(treeToExpand,1);
-                lsys.setTree(expandedTree);
+                lsys.setTreeString(expandedTree);
 
             }
             slow();

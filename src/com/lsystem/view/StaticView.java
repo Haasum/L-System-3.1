@@ -1,7 +1,7 @@
 package com.lsystem.view;
 
 import com.lsystem.control.ExpandKeyListener;
-import com.lsystem.model.RecursiveLsys;
+import com.lsystem.model.RecursiveLsystem;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,18 +13,17 @@ import static com.lsystem.view.DynamicView.screenWidth;
 
 
 public class StaticView extends JFrame {
-    static Dimension screenSize;
+    final static Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
     JPanel dynamicView;
     MenuPanel menuPanel;
-    RecursiveLsys lsys;
+    RecursiveLsystem lsystem;
     Texture texture;
+
     final static int MENU_WIDTH = 100;
 
-
-    public StaticView(RecursiveLsys lsys){
-        this.lsys = lsys;
+    public StaticView(RecursiveLsystem lsystem){
+        this.lsystem = lsystem;
         drawFrame();
-
         drawMainPanel();
         drawMenuPanel();
 
@@ -33,21 +32,18 @@ public class StaticView extends JFrame {
     }
 
     private void drawMainPanel() {
-
-        dynamicView = new DynamicView(lsys);
+        dynamicView = new DynamicView(lsystem);
         dynamicView.setVisible(true);
         dynamicView.setSize(screenWidth-MENU_WIDTH,screenHeight);
         dynamicView.setBackground(new Color(99, 125, 150));
         dynamicView.setLayout(null);
         dynamicView.setLocation(MENU_WIDTH,0);
         this.add(dynamicView);
-
     }
 
     private void drawFrame() {
-        setTitle("Growing Tree 2");
-        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize);
+        setTitle("Growing Tree");
+        setSize(SCREEN_SIZE);
         setVisible(true);
         setLayout(null);
         setLocationRelativeTo(null);
@@ -55,7 +51,7 @@ public class StaticView extends JFrame {
     }
 
     private void drawMenuPanel() {
-        menuPanel = new MenuPanel(lsys, this);
+        menuPanel = new MenuPanel(lsystem, this);
         menuPanel.setVisible(true);
         menuPanel.setSize(MENU_WIDTH, screenHeight);
         menuPanel.setBackground(new Color(255,255,255));

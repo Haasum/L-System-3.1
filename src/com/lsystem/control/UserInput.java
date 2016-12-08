@@ -1,10 +1,10 @@
 package com.lsystem.control;
 
-import com.lsystem.model.RecursiveLsys;
+import com.lsystem.model.RecursiveLsystem;
 
 public interface UserInput {
 
-    void expandGeneration(RecursiveLsys lsys);
+    void expandGeneration(RecursiveLsystem lsys);
 
 
 }

@@ -1,6 +1,6 @@
 package com.lsystem.view;
 
-import com.lsystem.model.RecursiveLsys;
+import com.lsystem.model.RecursiveLsystem;
 import com.lsystem.control.UserInput;
 import com.lsystem.control.UserInputFactory;
 
@@ -13,7 +13,7 @@ import java.util.Map;
 
 
 public class MenuPanel extends JPanel {
-    RecursiveLsys lsys;
+    RecursiveLsystem lsys;
     Texture texture;
     public enum InputType {LEAPLISTENER, KEYLISTENER};
     private Map<JButton,InputType> inputTypeMap; //TODO: bruges til leapmotion - må ikke slettes
@@ -21,7 +21,7 @@ public class MenuPanel extends JPanel {
     StaticView staticView;
 
 
-    public MenuPanel(RecursiveLsys lsys, StaticView staticView) {
+    public MenuPanel(RecursiveLsystem lsys, StaticView staticView) {
         this.staticView = staticView;
         this.lsys = lsys;
         makeTextureButtons();
@@ -81,7 +81,7 @@ public class MenuPanel extends JPanel {
         leafbuttonGrow.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("put texture on tree");
+
                 texture = new Texture(true);
             }
         });
@@ -93,7 +93,7 @@ public class MenuPanel extends JPanel {
         leafbuttonKill.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("remove texture on tree");
+
                 texture = new Texture(false);
             }
         });

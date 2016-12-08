@@ -1,24 +1,23 @@
-package com.lsystem.control;
+package com.lsystem.model;
 
-import com.lsystem.model.RecursiveLsys;
 import com.lsystem.view.NonTerminal;
 
 import java.util.ArrayList;
 
 
-public class ButtonExpandListener {//implements ActionListener{
+public class BudExpander {
 
-    RecursiveLsys lsys;
+    RecursiveLsystem lsys;
     ArrayList<NonTerminal> ntArray;
 
-    public ButtonExpandListener(ArrayList<NonTerminal> ntArray, RecursiveLsys lsys){
+    public BudExpander(ArrayList<NonTerminal> ntArray, RecursiveLsystem lsys){
         this.ntArray = ntArray;
         this.lsys = lsys;
         checkArray();
     }
 
     private void checkArray() {
-        String currTree = lsys.getTree();
+        String currTree = lsys.getTreeString();
 
         ArrayList<String> subStrings = new ArrayList<String>();
 
@@ -53,7 +52,7 @@ public class ButtonExpandListener {//implements ActionListener{
         {
             newTreeTheEnd += s;
         }
-        lsys.setTree(newTreeTheEnd);
+        lsys.setTreeString(newTreeTheEnd);
     }
 
 /*

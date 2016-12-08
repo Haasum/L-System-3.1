@@ -1,20 +1,20 @@
 
 package com.lsystem.control;
 
-import com.lsystem.model.RecursiveLsys;
+import com.lsystem.model.RecursiveLsystem;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class ExpandKeyListener implements KeyListener, UserInput {
 
-    RecursiveLsys lsys;
+    RecursiveLsystem lsys;
     String treeToExpand;
     String expandedTree;
     int currGenNo = 0;
     int maxGenNo = 10;
 
-    public ExpandKeyListener(RecursiveLsys lsys) {
+    public ExpandKeyListener(RecursiveLsystem lsys) {
         this.lsys = lsys;
     }
 
@@ -36,12 +36,12 @@ public class ExpandKeyListener implements KeyListener, UserInput {
     }
 
     @Override
-    public void expandGeneration(RecursiveLsys lsys) {
+    public void expandGeneration(RecursiveLsystem lsys) {
         if (currGenNo <= maxGenNo) {
             currGenNo++;
-            treeToExpand = lsys.getTree();
+            treeToExpand = lsys.getTreeString();
             expandedTree = lsys.expand(treeToExpand, 1);
-            lsys.setTree(expandedTree);
+            lsys.setTreeString(expandedTree);
         } else
             System.out.println("Too many generations");
 

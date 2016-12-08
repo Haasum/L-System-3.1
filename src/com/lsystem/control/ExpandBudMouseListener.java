@@ -6,12 +6,12 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class ExpandNodeMouseListener implements MouseListener{ //TODO: ændre navn til NonTerminalMouseListener
+public class ExpandBudMouseListener implements MouseListener{ //TODO: ændre navn til NonTerminalMouseListener
 
     DynamicView dynamicView;
     Point mouseP;
 
-    public ExpandNodeMouseListener(DynamicView dynamicView){
+    public ExpandBudMouseListener(DynamicView dynamicView){
         this.dynamicView = dynamicView;
         dynamicView.addMouseListener(this);
     }

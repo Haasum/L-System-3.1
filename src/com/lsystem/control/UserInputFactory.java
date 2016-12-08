@@ -1,17 +1,17 @@
 package com.lsystem.control;
 
-import com.lsystem.model.RecursiveLsys;
+import com.lsystem.model.RecursiveLsystem;
 import com.lsystem.view.MenuPanel;
 import com.lsystem.view.StaticView;
 
 public class UserInputFactory {
 
-    RecursiveLsys lsys;
+    RecursiveLsystem lsys;
     MenuPanel.InputType inputType;
     StaticView staticView;
   //  public enum InputType {LEAPLISTENER, KEYLISTENER};
 
-    public UserInputFactory(RecursiveLsys lsys) {
+    public UserInputFactory(RecursiveLsystem lsys) {
         this.lsys = lsys;
     }
 

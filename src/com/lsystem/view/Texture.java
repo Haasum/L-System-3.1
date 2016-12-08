@@ -41,13 +41,13 @@ public class Texture {
     public void loadImages() {
         try {
             Toolkit tk = Toolkit.getDefaultToolkit();
-            this.backImg = tk.createImage("Src//ImagePackage//backgroundImage.jpg");
-            this.soilImg = tk.createImage("Src//ImagePackage//soilTex.jpg"); //TODO: skal slettes hvis vi ikke bruger groundObject
-            this.leafImg = tk.createImage("Src//ImagePackage//leafRight.png");
-            this.leafImg2 = tk.createImage("Src//ImagePackage//leafleft.png");
-            this.leafHigh = tk.createImage("Src//ImagePackage//leafHorizontal.png");
-            this.barkImg2 = tk.createImage("Src//ImagePackage//barkTexture.jpg");
-            this.barkImg = ImageIO.read(new File("Src//ImagePackage//barkTexture.jpg"));
+            this.backImg = tk.createImage("Src//image_package//backgroundImage.jpg");
+            this.soilImg = tk.createImage("Src//image_package//soilTex.jpg"); //TODO: skal slettes hvis vi ikke bruger groundObject
+            this.leafImg = tk.createImage("Src//image_package//leafRight.png");
+            this.leafImg2 = tk.createImage("Src//image_package//leafleft.png");
+            this.leafHigh = tk.createImage("Src//image_package//leafHorizontal.png");
+            this.barkImg2 = tk.createImage("Src//image_package//barkTexture.jpg");
+            this.barkImg = ImageIO.read(new File("Src//image_package//barkTexture.jpg"));
         } catch (IOException var2) {
             Logger.getLogger(Texture.class.getName()).log(Level.SEVERE, (String)null, var2);
         }

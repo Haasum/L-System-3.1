@@ -5,16 +5,16 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Txt {
+public class TextfileReader {
 
-    public Txt() throws IOException {
-        checkTxt();
+    public TextfileReader() throws IOException {
+        getText();
     }
 
-    public String checkTxt() throws IOException {
+    public String getText() throws IOException {
         BufferedReader br;
         try {
-            br = new BufferedReader(new FileReader("src//TextfilePackage//txt.txt"));
+            br = new BufferedReader(new FileReader("src//textfile_package//randomtxt.txt"));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) {
@@ -26,8 +26,8 @@ public class Txt {
                         (IOException e) {
                     e.printStackTrace();
                 }
-                String inputFromText = sb.toString();
-                return inputFromText;
+                String inputFromTextFile = sb.toString();
+                return inputFromTextFile;
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

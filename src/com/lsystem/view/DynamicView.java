@@ -1,8 +1,8 @@
 package com.lsystem.view;
 
-import com.lsystem.control.ExpandNodeMouseListener;
-import com.lsystem.model.RecursiveLsys;
-import com.lsystem.control.ButtonExpandListener;
+import com.lsystem.control.ExpandBudMouseListener;
+import com.lsystem.model.RecursiveLsystem;
+import com.lsystem.model.BudExpander;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,30 +15,29 @@ import java.util.Map;
 import static com.lsystem.view.Texture.*;
 
 public class DynamicView extends JPanel {
-
-    ButtonExpandListener buttonListener;
-    RecursiveLsys lsys;
+//TODO Fix de ens ArrayLists
+    RecursiveLsystem lsystem;
     Graphics2D turtle;
     Graphics2D g2d;
     ArrayList<NonTerminal> listOfNT;
-    NonTerminal nt;
-    ButtonExpandListener buttonExpandListener;
+    NonTerminal nonTerminal;
+    BudExpander budExpander;
     ArrayList<NonTerminal> ntArray;
 
-    ExpandNodeMouseListener expandNodeMouseListener;
+    ExpandBudMouseListener expandBudMouseListener;
     private Map<NonTerminal, Point> testHashMap;
 
-    static int screenHeight = (int) StaticView.screenSize.getHeight();
-    static int screenWidth = (int) StaticView.screenSize.getWidth();
+    static int screenHeight = (int) StaticView.SCREEN_SIZE.getHeight();
+    static int screenWidth = (int) StaticView.SCREEN_SIZE.getWidth();
     static int middleX = (screenWidth - StaticView.MENU_WIDTH) / 2;
     private static final int BRANCH_HEIGHT = -40;
     AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX, screenHeight - 100);
     ArrayList<AffineTransform> subTrees = new ArrayList<AffineTransform>();
 
 
-    public DynamicView(RecursiveLsys lsys) {
+    public DynamicView(RecursiveLsystem lsystem) {
         super();
-        this.lsys = lsys;
+        this.lsystem = lsystem;
 
         makeMouseListener();
         testHashMap = new HashMap<>();
@@ -47,7 +46,7 @@ public class DynamicView extends JPanel {
     }
 
     private void makeMouseListener() {
-        expandNodeMouseListener = new ExpandNodeMouseListener(this);
+        expandBudMouseListener = new ExpandBudMouseListener(this);
     }
 
 
@@ -65,8 +64,8 @@ public class DynamicView extends JPanel {
         turtle.setTransform(originalTrans);
 
         int j = 0;
-        for (int i = 0; i < lsys.getTree().length(); i++) {
-            char currentCheck = lsys.getTree().charAt(i);
+        for (int i = 0; i < lsystem.getTreeString().length(); i++) {
+            char currentCheck = lsystem.getTreeString().charAt(i);
 
 
             switch (currentCheck) {
@@ -170,8 +169,8 @@ public class DynamicView extends JPanel {
 
     public void drawNonTerminal(Graphics2D turtle, Graphics2D g2dd, int i, char c) {
         AffineTransform newTransform = turtle.getTransform();
-        nt = new NonTerminal(g2dd, newTransform, this, i, c);//, affineTransform);
-        listOfNT.add(nt);
+        nonTerminal = new NonTerminal(g2dd, newTransform, this, i, c);//, affineTransform);
+        listOfNT.add(nonTerminal);
     }
 
     public void ntClicked(int mouseX, int mouseY) {
@@ -197,6 +196,6 @@ public class DynamicView extends JPanel {
     }
 
     private void expandNode(ArrayList ntArray) {
-        buttonExpandListener = new ButtonExpandListener(ntArray, lsys);
+        budExpander = new BudExpander(ntArray, lsystem);
     }
 }

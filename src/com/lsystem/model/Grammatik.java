@@ -5,21 +5,21 @@ import java.util.ArrayList;
 public class Grammatik {
     ArrayList<Rule> ruleset;
     char currentLetter;
-    String currRule = "";
+    String currentRule = "";
     Rule rule;
 
-    String textFile;
+    String textFileString;
 
 
     public Grammatik(String textFileString){
-        this.textFile = textFileString;
+        this.textFileString = textFileString;
         ruleset = new ArrayList<Rule>();
         addAxiom();
         addPrimitives();
         addRules();
     }
     public char addAxiom() {
-        char axiom = textFile.charAt(0);
+        char axiom = textFileString.charAt(0);
         return axiom;
     }
 
@@ -31,28 +31,28 @@ public class Grammatik {
         }
     }
     public void addRules() {
-        for (int i = 0; i < textFile.length()-1; i++) {
-            StringBuilder buildRule = new StringBuilder();
-            char current = textFile.charAt(i);
-            if (current == ':') {
-                currentLetter = textFile.charAt(i - 1);
+        for (int i = 0; i < textFileString.length()-1; i++) {
+            StringBuilder sb = new StringBuilder();
+            char c = textFileString.charAt(i);
+            if (c == ':') {
+                currentLetter = textFileString.charAt(i - 1);
             }
-            if (current == ',') {
+            if (c == ',') {
                 addRule();
-                buildRule.setLength(0);
+                sb.setLength(0);
             }
-            else if (textFile.charAt(i+1) != ':' && current != ':'){
-                buildRule.append(current);
-                currRule += String.valueOf(buildRule);
+            else if (textFileString.charAt(i+1) != ':' && c != ':'){
+                sb.append(c);
+                currentRule += String.valueOf(sb);
             }
-            else if (current == '.') {
+            else if (c == '.') {
                 return;
             }
         }
     }
     private void addRule() { //rules are send and saved in a ruleset array.
-        rule = new Rule(currentLetter, currRule);
+        rule = new Rule(currentLetter, currentRule);
         ruleset.add(rule);
-        currRule = ""; //currRule is reset
+        currentRule = ""; //currentRule is reset
     }
 }
