@@ -1,7 +1,7 @@
 package com.lsystem.view;
 
-import com.lsystem.control.ExpandBudMouseListener;
-import com.lsystem.model.BudExpander;
+import com.lsystem.control.NonTerminalMouseListener;
+import com.lsystem.model.NonTerminalExpander;
 import com.lsystem.model.RecursiveLsystem;
 
 import javax.swing.*;
@@ -10,27 +10,27 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 
-import static com.lsystem.view.Texture.*;
+import static com.lsystem.view.VisualComponents.*;
 
 public class DynamicView extends JPanel {
-//TODO Fix de ens ArrayLists
+
     RecursiveLsystem lsystem;
     Graphics2D turtle;
     Graphics2D g2d;
-    ArrayList<NonTerminal> listOfNT;
+    ArrayList<NonTerminal> allNonTerminals;
     NonTerminal nonTerminal;
-    BudExpander budExpander;
-    ArrayList<NonTerminal> ntArray;
+    NonTerminalExpander nonTerminalExpander;
+    ArrayList<NonTerminal> nonTerminalsInPoint;
+    NonTerminalMouseListener nonTerminalMouseListener;
 
-    ExpandBudMouseListener expandBudMouseListener;
-
-
+//TODO NAJA SKIFTER PLACErING PÅ Screen dimension
     public static int screenHeight = (int) StaticView.SCREEN_SIZE.getHeight();
     public static int screenWidth = (int) StaticView.SCREEN_SIZE.getWidth();
     static int middleX = (screenWidth - StaticView.MENU_WIDTH) / 2;
+
     private static final int BRANCH_HEIGHT = -40;
-    AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX, screenHeight - 100);
-    ArrayList<AffineTransform> subTrees = new ArrayList<AffineTransform>();
+    AffineTransform firstTransform = AffineTransform.getTranslateInstance(middleX, screenHeight - 100);
+    ArrayList<AffineTransform> turtlePositions = new ArrayList<AffineTransform>();
 
 
     public DynamicView(RecursiveLsystem lsystem) {
@@ -39,34 +39,32 @@ public class DynamicView extends JPanel {
 
         makeMouseListener();
 
-        listOfNT = new ArrayList<NonTerminal>();
+        allNonTerminals = new ArrayList<NonTerminal>();
 
     }
 
     private void makeMouseListener() {
-        expandBudMouseListener = new ExpandBudMouseListener(this);
+        nonTerminalMouseListener = new NonTerminalMouseListener(this);
     }
-
 
     @Override
     public void paintComponent(Graphics g) {
-        listOfNT.clear();
+        allNonTerminals.clear();
 
         super.paintComponent(g);
-
         turtle = (Graphics2D) g.create();
         g2d = (Graphics2D) g.create();
 
         makeBackground(turtle);
 
-        turtle.setTransform(originalTrans);
+        turtle.setTransform(firstTransform);
 
         int j = 0;
         for (int i = 0; i < lsystem.getTreeString().length(); i++) {
-            char currentCheck = lsystem.getTreeString().charAt(i);
+            char c = lsystem.getTreeString().charAt(i);
 
 
-            switch (currentCheck) {
+            switch (c) {
                 case 'F':
                     j++;
                     if (j == 1) {
@@ -76,13 +74,13 @@ public class DynamicView extends JPanel {
                     }
                     break;
                 case 'A':
-                    drawNonTerminal(turtle, g2d, i, currentCheck);
+                    drawNonTerminal(turtle, g2d, i, c);
                     break;
                 case 'B':
-                    drawNonTerminal(turtle, g2d, i, currentCheck);
+                    drawNonTerminal(turtle, g2d, i, c);
                     break;
                 case 'C':
-                    drawNonTerminal(turtle, g2d, i, currentCheck);
+                    drawNonTerminal(turtle, g2d, i, c);
                     break;
                 case '+':
                     rotateRight(turtle);
@@ -97,7 +95,7 @@ public class DynamicView extends JPanel {
                     pop(turtle);
                     break;
                 default:
-                    System.out.println("Char " + currentCheck + " not in alphabet");
+                    System.out.println("Char " + c + " not in alphabet");
                     break;
             }
         }
@@ -106,13 +104,13 @@ public class DynamicView extends JPanel {
     }
 
     private void push(Graphics2D turtle) {
-        subTrees.add(turtle.getTransform());
+        turtlePositions.add(turtle.getTransform());
     }
 
     private void pop(Graphics2D turtle) {
-        AffineTransform t = subTrees.get(subTrees.size() - 1);
-        turtle.setTransform(t);
-        subTrees.remove(subTrees.size() - 1);
+        AffineTransform tf = turtlePositions.get(turtlePositions.size() - 1);
+        turtle.setTransform(tf);
+        turtlePositions.remove(turtlePositions.size() - 1);
     }
 
     private void growBranch(Graphics2D turtle) {
@@ -126,8 +124,8 @@ public class DynamicView extends JPanel {
     private void drawLeafs(Graphics2D turtle) {
 
         for (int i = 0; i < 4; i++) { //loop for drawing the leafs
-            turtle.drawImage(leafImg, 0, (i - 1) * ((-1) * BRANCH_HEIGHT / 4), this);
-            turtle.drawImage(leafImg2, -15, (i - 1) * ((-1) * (10 * BRANCH_HEIGHT) / 47), this); //the leafs are drawn with a spacing of 4,7 pixel
+            turtle.drawImage(leafRight, 0, (i - 1) * ((-1) * BRANCH_HEIGHT / 4), this);
+            turtle.drawImage(leafLeft, -15, (i - 1) * ((-1) * (10 * BRANCH_HEIGHT) / 47), this); //the leafs are drawn with a spacing of 4,7 pixel
         }
 
     }
@@ -158,41 +156,32 @@ public class DynamicView extends JPanel {
     }
 
     private void makeBackground(Graphics2D turtle) {
-        g2d.drawImage(backImg, 0, 0, screenWidth, screenHeight, this); //backgroundIMG. placed on position 0,0 - and scaled to fit screensize
+        g2d.drawImage(VisualComponents.background, 0, 0, screenWidth, screenHeight, this); //backgroundIMG. placed on position 0,0 - and scaled to fit screensize
         turtle.setColor(Color.BLACK);
-        turtle.setPaint(Texture.barkTex);
+        turtle.setPaint(VisualComponents.barkTex);
 
     }
 
     public void drawNonTerminal(Graphics2D turtle, Graphics2D g2dd, int i, char c) {
-        AffineTransform newTransform = turtle.getTransform();
-        nonTerminal = new NonTerminal(g2dd, newTransform, this, i, c);//, affineTransform);
-        listOfNT.add(nonTerminal);
+        AffineTransform currentTf = turtle.getTransform();
+        nonTerminal = new NonTerminal(g2dd, currentTf, this, i, c);
+        allNonTerminals.add(nonTerminal);
     }
 
-    public void ntClicked(int mouseX, int mouseY) {
-
-        ntArray = new ArrayList<NonTerminal>();
-
-
-        for (NonTerminal nt : listOfNT) {
-
-            if (nt.getNtCircle().contains(mouseX, mouseY) == true) {
-
-                ntArray.add(nt);
-            } else {
-
-
+    public void fetchNonTerminalInPoint(int mouseX, int mouseY) {
+        nonTerminalsInPoint = new ArrayList<NonTerminal>();
+        for (NonTerminal nt : allNonTerminals) {
+            if (nt.getBud().contains(mouseX, mouseY) == true) {
+                nonTerminalsInPoint.add(nt);
             }
-
         }
 
-        if (ntArray.isEmpty() == false) {
-            expandNode(ntArray);
+        if (nonTerminalsInPoint.isEmpty() == false) {
+            expandNonTerminals(nonTerminalsInPoint);
         }
     }
 
-    private void expandNode(ArrayList ntArray) {
-        budExpander = new BudExpander(ntArray, lsystem);
+    private void expandNonTerminals(ArrayList nonTerminalsInPoint) {
+        nonTerminalExpander = new NonTerminalExpander(nonTerminalsInPoint, lsystem);
     }
 }

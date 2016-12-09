@@ -10,7 +10,6 @@ public class RecursiveLsystem {
     int genNo = 0;
     String treeString;
 
-//TODO i recsys: der skal være en metode: stopCondition()
 
     public RecursiveLsystem(Grammatik grammatik) {
 
@@ -24,6 +23,8 @@ public class RecursiveLsystem {
     }
     public String expand(String s, int genNo) {
         String next = "";
+//TODO i recsys: der skal være en metode, der stopper rekursionen: stopCondition()
+
         if (genNo == 0) {
             return s;
         }

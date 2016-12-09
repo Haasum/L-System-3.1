@@ -8,14 +8,14 @@ import java.awt.event.KeyListener;
 
 public class ExpandKeyListener implements KeyListener, UserInput {
 
-    RecursiveLsystem lsys;
+    RecursiveLsystem lsystem;
     String treeToExpand;
     String expandedTree;
-    int currGenNo = 0;
+    int currentGenNo = 0;
     int maxGenNo = 10;
 
-    public ExpandKeyListener(RecursiveLsystem lsys) {
-        this.lsys = lsys;
+    public ExpandKeyListener(RecursiveLsystem lsystem) {
+        this.lsystem = lsystem;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ExpandKeyListener implements KeyListener, UserInput {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_UP) {
-            expandGeneration(lsys);
+            expandGeneration(lsystem);
         } else {
             System.out.println("press up to make the tree grow");
         }
@@ -37,13 +37,13 @@ public class ExpandKeyListener implements KeyListener, UserInput {
 
     @Override
     public void expandGeneration(RecursiveLsystem lsys) {
-        if (currGenNo <= maxGenNo) {
-            currGenNo++;
+        if (currentGenNo <= maxGenNo) {
+            currentGenNo++;
             treeToExpand = lsys.getTreeString();
             expandedTree = lsys.expand(treeToExpand, 1);
             lsys.setTreeString(expandedTree);
         } else
-            System.out.println("Too many generations");
+            System.out.println("The tree will only expand 10 generations to avoid overloading your computer"+"\n"+"You can change this limit in the class ExpandKeyListener ");
 
     }
 }

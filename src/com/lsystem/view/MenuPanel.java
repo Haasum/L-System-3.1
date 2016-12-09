@@ -1,6 +1,5 @@
 package com.lsystem.view;
 
-import com.leapmotion.leap.Controller;
 import com.lsystem.control.UserInput;
 import com.lsystem.control.UserInputFactory;
 import com.lsystem.model.RecursiveLsystem;
@@ -14,9 +13,12 @@ import java.util.Map;
 
 public class MenuPanel extends JPanel {
     RecursiveLsystem lsys;
-    Texture texture;
-    public enum InputType {LEAPLISTENER, KEYLISTENER};
-    private Map<JButton,InputType> inputTypeMap; //TODO: bruges til leapmotion - må ikke slettes
+    VisualComponents visualComponents;
+
+    public enum InputType {LEAPLISTENER, KEYLISTENER}
+
+    ;
+    private Map<JButton, InputType> inputTypeMap; //TODO: bruges til leapmotion - må ikke slettes
     UserInput userInput;
     StaticView staticView;
     JPanel dynamicView;
@@ -36,7 +38,7 @@ public class MenuPanel extends JPanel {
         this.add(inputLabel);
         int y = 200;
 
-        for (InputType k: InputType.values()) {
+        for (InputType it : InputType.values()) {
             y += 60;
             JButton inputbutton = new JButton();
             inputbutton.setLocation(10, y);
@@ -48,7 +50,7 @@ public class MenuPanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     UserInputFactory userInputFactory = new UserInputFactory(lsys);
-                    userInput = userInputFactory.fetchUserInput(k);
+                    userInput = userInputFactory.fetchUserInput(it);
                     staticView.addListeners(userInput);
                 }
             });
@@ -56,37 +58,36 @@ public class MenuPanel extends JPanel {
     }
 
 
-
     private void makeTextureButtons() {
 
-        JLabel textureLabel = new JLabel("Texture on/off");
+        JLabel textureLabel = new JLabel("VisualComponents on/off");
         textureLabel.setLocation(10, 50);
         textureLabel.setSize(100, 30);
         this.add(textureLabel);
 
-        Button leafbuttonGrow = new Button("ON");
-        leafbuttonGrow.setLocation(10, 100);
-        leafbuttonGrow.setBackground(Color.green);
-        leafbuttonGrow.setSize(50, 50);
-        this.add(leafbuttonGrow);
+        Button textureOnBtn = new Button("ON");
+        textureOnBtn.setLocation(10, 100);
+        textureOnBtn.setBackground(Color.green);
+        textureOnBtn.setSize(50, 50);
+        this.add(textureOnBtn);
 
-        leafbuttonGrow.addActionListener(new ActionListener() {
+        textureOnBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                texture = new Texture(true);
+                visualComponents = new VisualComponents(true);
             }
         });
-        Button leafbuttonKill = new Button("OFF");
-        leafbuttonKill.setLocation(10, 160);
-        leafbuttonKill.setBackground(Color.black);
-        leafbuttonKill.setSize(50, 50);
-        this.add(leafbuttonKill);
-        leafbuttonKill.addActionListener(new ActionListener() {
+        Button textureOffBtn = new Button("OFF");
+        textureOffBtn.setLocation(10, 160);
+        textureOffBtn.setBackground(Color.black);
+        textureOffBtn.setSize(50, 50);
+        this.add(textureOffBtn);
+        textureOffBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                texture = new Texture(false);
+                visualComponents = new VisualComponents(false);
             }
         });
     }

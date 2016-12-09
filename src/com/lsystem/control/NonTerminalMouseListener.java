@@ -2,16 +2,14 @@ package com.lsystem.control;
 
 import com.lsystem.view.DynamicView;
 
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class ExpandBudMouseListener implements MouseListener{ //TODO: ændre navn til NonTerminalMouseListener
+public class NonTerminalMouseListener implements MouseListener{
 
     DynamicView dynamicView;
-    Point mouseP;
 
-    public ExpandBudMouseListener(DynamicView dynamicView){
+    public NonTerminalMouseListener(DynamicView dynamicView){
         this.dynamicView = dynamicView;
         dynamicView.addMouseListener(this);
     }
@@ -19,11 +17,9 @@ public class ExpandBudMouseListener implements MouseListener{ //TODO: ændre nav
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        int x = e.getX();
-        int y = e.getY();
-
-        mouseP = new Point(x,y);
-        dynamicView.ntClicked(x, y);
+        int mouseX = e.getX();
+        int mouseY = e.getY();
+        dynamicView.fetchNonTerminalInPoint(mouseX, mouseY);
 
     }
 

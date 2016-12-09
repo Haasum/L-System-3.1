@@ -1,6 +1,5 @@
 package com.lsystem.view;
 
-import com.leapmotion.leap.Controller;
 import com.lsystem.control.UserInput;
 import com.lsystem.model.RecursiveLsystem;
 
@@ -19,17 +18,17 @@ public class StaticView extends JFrame {
     JPanel dynamicView;
     MenuPanel menuPanel;
     RecursiveLsystem lsystem;
-    Texture texture;
+    VisualComponents visualComponents;
 
     final static int MENU_WIDTH = 100;
 
     public StaticView(RecursiveLsystem lsystem){
         this.lsystem = lsystem;
-        drawFrame();
+        drawMainFrame();
         drawMainPanel();
         drawMenuPanel();
 
-        texture = new Texture(true);
+        visualComponents = new VisualComponents(true);
 
     }
 
@@ -43,7 +42,7 @@ public class StaticView extends JFrame {
         this.add(dynamicView);
     }
 
-    private void drawFrame() {
+    private void drawMainFrame() {
         setTitle("Growing Tree");
         setSize(SCREEN_SIZE);
         setVisible(true);

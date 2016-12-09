@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Controller {
 
-    public Controller(com.leapmotion.leap.Controller controller2)  throws IOException { //TODO: leapmotion: //IOException){//com.leapmotion.leap.Controller controller2) {
+    public Controller(com.leapmotion.leap.Controller leapController)  throws IOException { //TODO: leapmotion: //IOException){//com.leapmotion.leap.Controller leapController) {
 
 
         TextfileReader textFileReader = new TextfileReader();
@@ -24,9 +24,9 @@ public class Controller {
 
 
 //TODO: følgende er det der kalder leapListener. udkommenteret i denne version
-        com.lsystem.LeapListener listener = new com.lsystem.LeapListener(controller2, lsystem);
-        controller2.enableGesture(Gesture.Type.TYPE_SWIPE);//  controller.enableGesture( Gesture.Type.TYPE_CIRCLE );
-        controller2.addListener(listener);
+        com.lsystem.LeapListener listener = new com.lsystem.LeapListener(leapController, lsystem);
+        leapController.enableGesture(Gesture.Type.TYPE_SWIPE);//  controller.enableGesture( Gesture.Type.TYPE_CIRCLE );
+        leapController.addListener(listener);
 
         System.out.println("Press Enter to quit..."); // Keep this process running until Enter is pressed
         try {
@@ -36,7 +36,7 @@ public class Controller {
         }
 
         // Remove the sample listener when done
-        controller2.removeListener(listener);
+        leapController.removeListener(listener);
 
 
 
