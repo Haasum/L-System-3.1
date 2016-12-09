@@ -1,18 +1,15 @@
 
 
-package com.lsystem;
+package com.lsystem.control;
+
 import com.leapmotion.leap.Controller;
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Frame;
-import com.lsystem.control.UserInput;
 import com.lsystem.model.RecursiveLsystem;
 
-import javax.swing.*;
-import java.awt.*;
 
 import static com.lsystem.view.DynamicView.screenHeight;
 import static com.lsystem.view.DynamicView.screenWidth;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 
 public class LeapListener extends Listener implements UserInput {
@@ -22,17 +19,12 @@ public class LeapListener extends Listener implements UserInput {
     boolean USE_CALIBRATED_SCREEN = true;
 
     //Just to control the speed, it can be changed accordingly to needs
-    int SLOW = 10;
+    int SLOW = 40;
 
-    //Screen resolution, it should match the current screen resolution for more precise movements
-    int SCREEN_X = screenWidth;
-    int SCREEN_Y = screenHeight;
 
     float cur_x = 0, cur_y = 0;
     int fingers_count = 0;
     int prev_fingers_count = 0;
-    JLabel handLabel;
-    JPanel leapPanel;
 
     private float x;
     private float y;
@@ -46,48 +38,18 @@ public class LeapListener extends Listener implements UserInput {
     public LeapListener(Controller leapController, RecursiveLsystem lsys) {
         this.lsys = lsys;
         System.out.println("is called");
-        //onInit(leapController);
-      //  makeLeapFrame();
+        ;
         slow();
     }
 
 
-    private void makeLeapFrame() {
-        JFrame leapFrame = new JFrame();
-        leapFrame.setSize(200,200);
-        leapFrame.setTitle("leap motion");
-        leapFrame.setVisible(true);
-        leapFrame.setLayout(new BorderLayout());
-        leapFrame.setLocation(0,0);
-        leapFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-
-        JPanel leapPanel = new JPanel();
-        leapPanel.setLayout(null);
-        leapFrame.add(leapPanel);
-        leapPanel.setBackground(Color.white);
-
-
-
-        JLabel handLabel = new JLabel("H");
-        handLabel.setBounds((int) getX(),(int) getY(),10,10);
-        leapPanel.add(handLabel);
-
-    }
-
-
-    public void onInit(Controller controller) {
-        System.out.println("Initialized");
-        System.out.println("Current screen resolution: " + SCREEN_X + "x" + SCREEN_Y);
-    }
-
     public void onConnect(Controller leapController) {
-        System.out.println("Connected");
+        System.out.println("LeapMotion is Connected");
         isConnected = true;
     }
 
     public void onDisconnect(Controller leapController) {
-        System.out.println("Disconnected");
+        System.out.println("LeapMotion is Disconnected");
         isConnected = false;
     }
 
@@ -156,10 +118,8 @@ public class LeapListener extends Listener implements UserInput {
                         float x = s.widthPixels() * intersection.getX();
                         // flip y coordinate to standard top-left origin
                         float y = s.heightPixels() * (1.0f - intersection.getY());
-                        //         moveMouse(x, y);
 
                         System.out.println("x pos is " + x + " & y pos is " + y);
-
 
 
                     }
@@ -174,58 +134,23 @@ public class LeapListener extends Listener implements UserInput {
 
     }
 
-            // Slows down the frame rate
-        private void slow() {
-            try {
-                Thread.sleep(SLOW);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    // Slows down the frame rate
+    private void slow() {
+        try {
+            Thread.sleep(SLOW);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-
-        public void moveMouse(float x, float y) {
-            Robot mouseHandler;
-
-            if (cur_x != x || cur_y != y) {
-
-                cur_x = x;
-                cur_y = y;
-
-                try {
-
-                    mouseHandler = new Robot();
-                    mouseHandler.mouseMove((int) x, (int) y);
-
-                } catch (AWTException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-
-    public float getX() {
-        return x;
     }
 
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public void setY(float y) {
-        this.y = y;
-    }
 
     @Override
-    public void expandGeneration(RecursiveLsystem lsys) {
-        System.out.println("Det virker");
+    public void expandGeneration(RecursiveLsystem lsystem) {
+        System.out.println("tree is now expanding");
         //TODO: her tilføjes expand agtig metode
-        treeToExpand = lsys.getTreeString();
-        expandedTree = lsys.expand(treeToExpand,1);
-        lsys.setTreeString(expandedTree);
+        treeToExpand = lsystem.getTreeString();
+        expandedTree = lsystem.expand(treeToExpand, 1);
+        lsystem.setTreeString(expandedTree);
 
     }
 }

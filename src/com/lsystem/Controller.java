@@ -24,7 +24,7 @@ public class Controller {
 
 
 //TODO: følgende er det der kalder leapListener. udkommenteret i denne version
-        com.lsystem.LeapListener listener = new com.lsystem.LeapListener(leapController, lsystem);
+        com.lsystem.control.LeapListener listener = new com.lsystem.control.LeapListener(leapController, lsystem);
         leapController.enableGesture(Gesture.Type.TYPE_SWIPE);//  controller.enableGesture( Gesture.Type.TYPE_CIRCLE );
         leapController.addListener(listener);
 
