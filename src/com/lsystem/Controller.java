@@ -20,11 +20,6 @@ public class Controller {
         StaticView staticView = new StaticView(lsystem);
 
 
-
-//        ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsystem);
-//        staticView.addKeyListener(expandKeyListener);
-//        staticView.addListeners(expandKeyListener);
-
 /*
 TODO: følgende er det der kalder leapListener. udkommenteret i denne version
         LeapListener listener = new LeapListener(controller2, lsystem);
@@ -46,3 +41,14 @@ TODO: følgende er det der kalder leapListener. udkommenteret i denne version
 
 
 }
+
+
+
+
+
+
+
+
+//        ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsystem);
+//        staticView.addKeyListener(expandKeyListener);
+//        staticView.addListeners(expandKeyListener);

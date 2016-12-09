@@ -6,5 +6,4 @@ public interface UserInput {
 
     void expandGeneration(RecursiveLsystem lsys);
 
-
 }

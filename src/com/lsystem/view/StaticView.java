@@ -63,9 +63,8 @@ public class StaticView extends JFrame {
 
     public void addListeners(UserInput userInput){
 
-        this.addKeyListener((KeyListener) userInput);
-        dynamicView.addKeyListener((KeyListener) userInput);
-
+            this.addKeyListener((KeyListener) userInput);
+            dynamicView.addKeyListener((KeyListener) userInput);
 
     }
 }
