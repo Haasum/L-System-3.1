@@ -1,5 +1,6 @@
 package com.lsystem.view;
 
+import com.leapmotion.leap.Controller;
 import com.lsystem.control.UserInput;
 import com.lsystem.control.UserInputFactory;
 import com.lsystem.model.RecursiveLsystem;

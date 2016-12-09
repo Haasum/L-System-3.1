@@ -1,5 +1,6 @@
 package com.lsystem;
 
+import com.leapmotion.leap.Gesture;
 import com.lsystem.control.TextfileReader;
 import com.lsystem.model.Grammatik;
 import com.lsystem.model.RecursiveLsystem;
@@ -9,7 +10,7 @@ import java.io.IOException;
 
 public class Controller {
 
-    public Controller() throws IOException { //TODO: leapmotion: //IOException){//com.leapmotion.leap.Controller controller2) {
+    public Controller(com.leapmotion.leap.Controller controller2)  throws IOException { //TODO: leapmotion: //IOException){//com.leapmotion.leap.Controller controller2) {
 
 
         TextfileReader textFileReader = new TextfileReader();
@@ -20,9 +21,10 @@ public class Controller {
         StaticView staticView = new StaticView(lsystem);
 
 
-/*
-TODO: følgende er det der kalder leapListener. udkommenteret i denne version
-        LeapListener listener = new LeapListener(controller2, lsystem);
+
+
+//TODO: følgende er det der kalder leapListener. udkommenteret i denne version
+        com.lsystem.LeapListener listener = new com.lsystem.LeapListener(controller2, lsystem);
         controller2.enableGesture(Gesture.Type.TYPE_SWIPE);//  controller.enableGesture( Gesture.Type.TYPE_CIRCLE );
         controller2.addListener(listener);
 
@@ -34,7 +36,8 @@ TODO: følgende er det der kalder leapListener. udkommenteret i denne version
         }
 
         // Remove the sample listener when done
-        controller2.removeListener(listener); */
+        controller2.removeListener(listener);
+
 
 
     }

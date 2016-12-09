@@ -25,8 +25,8 @@ public class DynamicView extends JPanel {
     ExpandBudMouseListener expandBudMouseListener;
 
 
-    static int screenHeight = (int) StaticView.SCREEN_SIZE.getHeight();
-    static int screenWidth = (int) StaticView.SCREEN_SIZE.getWidth();
+    public static int screenHeight = (int) StaticView.SCREEN_SIZE.getHeight();
+    public static int screenWidth = (int) StaticView.SCREEN_SIZE.getWidth();
     static int middleX = (screenWidth - StaticView.MENU_WIDTH) / 2;
     private static final int BRANCH_HEIGHT = -40;
     AffineTransform originalTrans = AffineTransform.getTranslateInstance(middleX, screenHeight - 100);

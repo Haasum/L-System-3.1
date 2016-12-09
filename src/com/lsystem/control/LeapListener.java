@@ -1,19 +1,21 @@
 
-/*
+
 package com.lsystem;
 import com.leapmotion.leap.Controller;
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Frame;
+import com.lsystem.control.UserInput;
+import com.lsystem.model.RecursiveLsystem;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static com.lsystem.Turtle.screenHeight;
-import static com.lsystem.Turtle.screenWidth;
+import static com.lsystem.view.DynamicView.screenHeight;
+import static com.lsystem.view.DynamicView.screenWidth;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 
-public class LeapListener extends Listener {
+public class LeapListener extends Listener implements UserInput {
 
     //True for Debugging
     boolean DEBUG = true;
@@ -24,7 +26,7 @@ public class LeapListener extends Listener {
 
     //Screen resolution, it should match the current screen resolution for more precise movements
     int SCREEN_X = screenWidth;
-    int SCREEN_Y = screenHeight; //NOT USED
+    int SCREEN_Y = screenHeight;
 
     float cur_x = 0, cur_y = 0;
     int fingers_count = 0;
@@ -104,12 +106,8 @@ public class LeapListener extends Listener {
 
 
             if (frame.gestures().get(i).type() == Gesture.Type.TYPE_SWIPE) {
+                expandGeneration(lsys);
 
-                System.out.println("Det virker");
-                //TODO: her tilføjes expand agtig metode
-                treeToExpand = lsys.getTreeString();
-                expandedTree = lsys.expand(treeToExpand,1);
-                lsys.setTreeString(expandedTree);
 
             }
             slow();
@@ -220,6 +218,15 @@ public class LeapListener extends Listener {
     public void setY(float y) {
         this.y = y;
     }
+
+    @Override
+    public void expandGeneration(RecursiveLsystem lsys) {
+        System.out.println("Det virker");
+        //TODO: her tilføjes expand agtig metode
+        treeToExpand = lsys.getTreeString();
+        expandedTree = lsys.expand(treeToExpand,1);
+        lsys.setTreeString(expandedTree);
+
+    }
 }
 
-*/
