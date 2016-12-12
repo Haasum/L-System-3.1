@@ -20,13 +20,15 @@ public class StaticView extends JFrame {
     RecursiveLsystem lsystem;
     VisualComponents visualComponents;
 
-    final static int MENU_WIDTH = 100;
+    final static int MENU_WIDTH = 150;
 
     public StaticView(RecursiveLsystem lsystem){
         this.lsystem = lsystem;
         drawMainFrame();
         drawMainPanel();
         drawMenuPanel();
+
+
 
         visualComponents = new VisualComponents(true);
 
@@ -36,7 +38,7 @@ public class StaticView extends JFrame {
         dynamicView = new DynamicView(lsystem);
         dynamicView.setVisible(true);
         dynamicView.setSize(screenWidth-MENU_WIDTH,screenHeight);
-        dynamicView.setBackground(new Color(99, 125, 150));
+        dynamicView.setBackground(Color.WHITE);
         dynamicView.setLayout(null);
         dynamicView.setLocation(MENU_WIDTH,0);
         this.add(dynamicView);
@@ -52,6 +54,7 @@ public class StaticView extends JFrame {
     }
 
     private void drawMenuPanel() {
+
         menuPanel = new MenuPanel(lsystem, dynamicView, this);
         menuPanel.setVisible(true);
         menuPanel.setSize(MENU_WIDTH, screenHeight);

@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 import static com.lsystem.view.VisualComponents.*;
@@ -23,12 +25,12 @@ public class DynamicView extends JPanel {
     ArrayList<NonTerminal> nonTerminalsInPoint;
     NonTerminalMouseListener nonTerminalMouseListener;
 
-//TODO NAJA SKIFTER PLACErING PÅ Screen dimension
+    //TODO NAJA SKIFTER PLACErING PÅ Screen dimension
     public static int screenHeight = (int) StaticView.SCREEN_SIZE.getHeight();
     public static int screenWidth = (int) StaticView.SCREEN_SIZE.getWidth();
     static int middleX = (screenWidth - StaticView.MENU_WIDTH) / 2;
 
-    private static final int BRANCH_HEIGHT = -40;
+    public static int branchHeight = -40;
     AffineTransform firstTransform = AffineTransform.getTranslateInstance(middleX, screenHeight - 100);
     ArrayList<AffineTransform> turtlePositions = new ArrayList<AffineTransform>();
 
@@ -99,6 +101,7 @@ public class DynamicView extends JPanel {
                     break;
             }
         }
+
         repaint();
         requestFocus(); //keyexpand will work, even if buttons in the left panel are pressed last
     }
@@ -116,16 +119,16 @@ public class DynamicView extends JPanel {
     private void growBranch(Graphics2D turtle) {
         turtle.setStroke(new BasicStroke(2.0f));
 
-        turtle.drawLine(0, 0, 0, BRANCH_HEIGHT);
-        turtle.translate(0, BRANCH_HEIGHT);
+        turtle.drawLine(0, 0, 0, branchHeight);
+        turtle.translate(0, branchHeight);
         drawLeafs(turtle);
     }
 
     private void drawLeafs(Graphics2D turtle) {
 
         for (int i = 0; i < 4; i++) { //loop for drawing the leafs
-            turtle.drawImage(leafRight, 0, (i - 1) * ((-1) * BRANCH_HEIGHT / 4), this);
-            turtle.drawImage(leafLeft, -15, (i - 1) * ((-1) * (10 * BRANCH_HEIGHT) / 47), this); //the leafs are drawn with a spacing of 4,7 pixel
+            turtle.drawImage(leafRight, 0, (i - 1) * ((-1) * branchHeight / 4), this);
+            turtle.drawImage(leafLeft, -15, (i - 1) * ((-1) * (10 * branchHeight) / 47), this); //the leafs are drawn with a spacing of 4,7 pixel
         }
 
     }
@@ -184,4 +187,24 @@ public class DynamicView extends JPanel {
     private void expandNonTerminals(ArrayList nonTerminalsInPoint) {
         nonTerminalExpander = new NonTerminalExpander(nonTerminalsInPoint, lsystem);
     }
+
+
+    public void changeLenght() {
+        addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                String propertyName = evt.getPropertyName();
+                switch (propertyName) {
+                    case "branch":
+                        System.out.println("branchheight is now" + evt.getNewValue());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        repaint();
+    }
+
+
 }
