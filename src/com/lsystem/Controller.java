@@ -47,11 +47,6 @@ public class Controller {
 
 
 
-
-
-
-
-
 //        ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsystem);
 //        staticView.addKeyListener(expandKeyListener);
 //        staticView.addListeners(expandKeyListener);

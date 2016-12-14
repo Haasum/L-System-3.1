@@ -14,7 +14,7 @@ public class TextfileReader {
     public String getText() throws IOException {
         BufferedReader br;
         try {
-            br = new BufferedReader(new FileReader("src//textfile_package//randomtxt.txt"));
+            br = new BufferedReader(new FileReader("src//textfile_package//txt.txt")); //SETS WHICH TEXTFILE TO READ
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) {

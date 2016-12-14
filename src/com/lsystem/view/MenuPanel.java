@@ -10,10 +10,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
+import static com.lsystem.view.StaticView.MENU_WIDTH;
+
 
 public class MenuPanel extends JPanel {
     RecursiveLsystem lsys;
     VisualComponents visualComponents;
+    public static final int MENU_MIDDLE = MENU_WIDTH/2;
+
 
     public enum InputType {LEAPLISTENER, KEYLISTENER}
 
@@ -31,19 +35,22 @@ public class MenuPanel extends JPanel {
         makeInputButtons();
     }
 
+
+
     private void makeInputButtons() { //TODO: Til leapmotion - må ikke slettes
-        JLabel inputLabel = new JLabel("Input Type:");
-        inputLabel.setLocation(10, 220);
-        inputLabel.setSize(100, 30);
+        JLabel inputLabel = new JLabel("CHOSE INPUT");
+        inputLabel.setLocation(MENU_MIDDLE-40, 230);
+        inputLabel.setSize(80, 30);
         this.add(inputLabel);
         int y = 200;
 
         for (InputType it : InputType.values()) {
             y += 60;
-            JButton inputbutton = new JButton();
-            inputbutton.setLocation(10, y);
-            inputbutton.setBackground(Color.darkGray);
-            inputbutton.setSize(50, 50);
+
+            Button inputbutton = new Button(String.valueOf(it));
+            inputbutton.setLocation(MENU_MIDDLE-50, y);
+            inputbutton.setBackground(Color.lightGray);
+            inputbutton.setSize(100, 50);
             this.add(inputbutton);
 
             inputbutton.addActionListener(new ActionListener() {
@@ -60,15 +67,15 @@ public class MenuPanel extends JPanel {
 
     private void makeTextureButtons() {
 
-        JLabel textureLabel = new JLabel("VisualComponents on/off");
-        textureLabel.setLocation(10, 50);
+        JLabel textureLabel = new JLabel("TEXTURE ON/OFF");
+        textureLabel.setLocation(MENU_MIDDLE-50, 70);
         textureLabel.setSize(100, 30);
         this.add(textureLabel);
 
-        Button textureOnBtn = new Button("ON");
-        textureOnBtn.setLocation(10, 100);
-        textureOnBtn.setBackground(Color.green);
-        textureOnBtn.setSize(50, 50);
+        Button textureOnBtn = new Button("TEXTURE ON");
+        textureOnBtn.setLocation(MENU_MIDDLE-50, 100);
+        textureOnBtn.setBackground(Color.lightGray);
+        textureOnBtn.setSize(100, 50);
         this.add(textureOnBtn);
 
         textureOnBtn.addActionListener(new ActionListener() {
@@ -78,10 +85,11 @@ public class MenuPanel extends JPanel {
                 visualComponents = new VisualComponents(true);
             }
         });
-        Button textureOffBtn = new Button("OFF");
-        textureOffBtn.setLocation(10, 160);
-        textureOffBtn.setBackground(Color.black);
-        textureOffBtn.setSize(50, 50);
+
+        Button textureOffBtn = new Button("TEXTURE OFF");
+        textureOffBtn.setBackground(Color.LIGHT_GRAY);
+        textureOffBtn.setLocation(MENU_MIDDLE-50, 160);
+        textureOffBtn.setSize(100, 50);
         this.add(textureOffBtn);
         textureOffBtn.addActionListener(new ActionListener() {
             @Override
