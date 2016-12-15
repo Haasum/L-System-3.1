@@ -1,4 +1,4 @@
-package com.lsystem.control;
+package com.lsystem.model;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

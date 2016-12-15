@@ -60,6 +60,7 @@ public class StaticView extends JFrame {
         menuPanel.setSize(MENU_WIDTH, screenHeight);
         menuPanel.setBackground(new Color(255,255,255));
         menuPanel.setLayout(null);
+        menuPanel.setFocusable(true);
         menuPanel.setLocation(0,0);
         this.add(menuPanel);
     }

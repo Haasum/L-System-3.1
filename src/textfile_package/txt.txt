@@ -1,1 +1,1 @@
-A:F[+A][-A],B:ACA,
+A:F[+B][-A],B:FF[F++FA],

@@ -7,7 +7,6 @@ public class Grammatik {
     char currentLetter;
     String currentRule = "";
     Rule rule;
-
     String textFileString;
 
 
