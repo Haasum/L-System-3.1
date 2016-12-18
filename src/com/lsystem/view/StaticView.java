@@ -20,7 +20,7 @@ public class StaticView extends JFrame {
     RecursiveLsystem lsystem;
     VisualComponents visualComponents;
 
-    final static int MENU_WIDTH = 150;
+    final static int MENU_WIDTH = 150; //MENU_WIDTH is declared and assigned the final value 150
 
     public StaticView(RecursiveLsystem lsystem){
         this.lsystem = lsystem;
@@ -28,22 +28,33 @@ public class StaticView extends JFrame {
         drawMainPanel();
         drawMenuPanel();
 
-
-
         visualComponents = new VisualComponents(true);
 
     }
 
+    /**
+     * Creates the main panel.
+     * <p>
+     *     This initializes the dynamicView object, which is also refered to as the mainPanel.
+     * </p>
+     */
     private void drawMainPanel() {
         dynamicView = new DynamicView(lsystem);
         dynamicView.setVisible(true);
-        dynamicView.setSize(screenWidth-MENU_WIDTH,screenHeight);
+        dynamicView.setSize(screenWidth-MENU_WIDTH,screenHeight); //the size of the dynamicView panel is corresponding to the current screensize
         dynamicView.setBackground(Color.WHITE);
         dynamicView.setLayout(null);
         dynamicView.setLocation(MENU_WIDTH,0);
         this.add(dynamicView);
     }
 
+    /**
+     * Sets properties for the program frame.
+     * <p>
+     *     This sets the properties for the program frame, refered to as the Main Frame, or staticView.
+     *     This contains the properties, e.g. size, layout and title.
+     * </p>
+     */
     private void drawMainFrame() {
         setTitle("Growing Tree");
         setSize(SCREEN_SIZE);
@@ -53,6 +64,13 @@ public class StaticView extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+    /**
+     * Creates the menu panel.
+     * <p>
+     *     This creates an instance of the Menu Panel object.
+     *     This also sets the basic properties for that panel, e.g. size, layout and location.
+     * </p>
+     */
     private void drawMenuPanel() {
 
         menuPanel = new MenuPanel(lsystem, dynamicView, this);
@@ -64,7 +82,11 @@ public class StaticView extends JFrame {
         this.add(menuPanel);
     }
 
-    public void addListeners(UserInput userInput){
+    /**
+     * //TODO: mangler!!! hilsen naja
+     * @param userInput is the chosen userinput
+     */
+    public void addListeners(UserInput userInput){ //TODO: userinput.fetchinputType. man skal ikke se i koden at det er en keylistener eller en leaplistener
 
             this.addKeyListener((KeyListener) userInput);
             dynamicView.addKeyListener((KeyListener) userInput);

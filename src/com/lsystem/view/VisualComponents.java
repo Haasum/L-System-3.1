@@ -17,15 +17,23 @@ public class VisualComponents {
     public static TexturePaint barkTex;
 
     public VisualComponents(boolean shouldLoad) {
+
         if (shouldLoad ==  true) {
             loadImages();
             barkTex = new TexturePaint( this.barkImg, new Rectangle(0, 0, 150, 150));
         }
         else {
             setImagestoNull();
-            System.out.println("trying to remove visualComponents");
+            System.out.println("removing visualComponents");
         }
     }
+
+    /**
+     * Sets the images to null.
+     * <p>
+     *     The images are set to null, which means that there are no textures or images shown in the program frame.
+     * </p>
+     */
     private void setImagestoNull() {
         barkTex = null;
         barkImg = null;
@@ -34,6 +42,13 @@ public class VisualComponents {
         leafLeft = null;
 
     }
+
+    /**
+     * Loads the images.
+     * <p>
+     *     This loads the images from the image package.
+     * </p>
+     */
     public void loadImages() {
         try {
             Toolkit tk = Toolkit.getDefaultToolkit();
