@@ -15,6 +15,14 @@ public class Rule {
         setTerminal(true);
     }
 
+    /**
+     * Gets the left side of the ruleset.
+     * <p>
+     *     This is a getter of the Left side of the ruleset.
+     *     The left side contains the rule letter
+     * </p>
+     * @return
+     */
     public char getLeftSide() {
         return leftSide;
     }
@@ -23,6 +31,14 @@ public class Rule {
         this.leftSide = leftSide;
     }
 
+    /**
+     * Gets the right side of the ruleset.
+     * <p>
+     *     This is a getter of the right side of the ruleset.
+     *     The right side contains the rule of the ruleletter
+     * </p>
+     * @return
+     */
     public String getRightSide() {
         return rightSide;
     }

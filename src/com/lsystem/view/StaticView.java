@@ -20,7 +20,7 @@ public class StaticView extends JFrame {
     RecursiveLsystem lsystem;
     VisualComponents visualComponents;
 
-    final static int MENU_WIDTH = 150;
+    final static int MENU_WIDTH = 150; //MENU_WIDTH is declared and assigned the final value 150
 
     public StaticView(RecursiveLsystem lsystem){
         this.lsystem = lsystem;
@@ -85,7 +85,7 @@ public class StaticView extends JFrame {
 
     /**
      * //TODO: mangler!!! hilsen naja
-     * @param userInput
+     * @param userInput is the chosen userinput
      */
     public void addListeners(UserInput userInput){ //TODO: userinput.fetchinputType. man skal ikke se i koden at det er en keylistener eller en leaplistener
 

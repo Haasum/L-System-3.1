@@ -17,13 +17,14 @@ public class VisualComponents {
     public static TexturePaint barkTex;
 
     public VisualComponents(boolean shouldLoad) {
+
         if (shouldLoad ==  true) {
             loadImages();
             barkTex = new TexturePaint( this.barkImg, new Rectangle(0, 0, 150, 150));
         }
         else {
             setImagestoNull();
-            System.out.println("trying to remove visualComponents");
+            System.out.println("removing visualComponents");
         }
     }
 
