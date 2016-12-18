@@ -16,18 +16,16 @@ import static com.lsystem.view.StaticView.MENU_WIDTH;
 public class MenuPanel extends JPanel {
     RecursiveLsystem lsys;
     VisualComponents visualComponents;
-    public static final int MENU_MIDDLE = MENU_WIDTH/2;
-
-
-    public enum InputType {LEAPLISTENER, KEYLISTENER}
+    public static final int MENU_MIDDLE = MENU_WIDTH/2; //declares and assigns the value to MENU_MIDDLE
+    public enum InputType {LEAPLISTENER, KEYLISTENER} //declares and assigns the values (leaplistener & keylistener) to InputType
 
     ;
-    private Map<JButton, InputType> inputTypeMap; //TODO: bruges til leapmotion - må ikke slettes
+    private Map<JButton, InputType> inputTypeMap; //TODO: bruges til leapmotion - men bliver denne stadig brugt? kh naja
     UserInput userInput;
     StaticView staticView;
     JPanel dynamicView;
 
-    public MenuPanel(RecursiveLsystem lsys, JPanel dynamicView, StaticView staticView) {
+    public MenuPanel(RecursiveLsystem lsys, JPanel dynamicView, StaticView staticView) { //the constructor
         this.staticView = staticView;
         this.dynamicView = dynamicView;
         this.lsys = lsys;
