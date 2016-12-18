@@ -19,6 +19,7 @@ public class UserInputFactory {
 
         switch (inputType) {
             case LEAPLISTENER:
+                //TODO: ikke sikkert det skal være en factory. måske skal denne linje bare gøre det muligt at ekspande
                // return new LeapListener(controller2,lsystem);
                 return null;
             case KEYLISTENER:

@@ -64,7 +64,7 @@ public class StaticView extends JFrame {
         this.add(menuPanel);
     }
 
-    public void addListeners(UserInput userInput){
+    public void addListeners(UserInput userInput){ //TODO: userinput.fetchinputType. man skal ikke se i koden at det er en keylistener eller en leaplistener
 
             this.addKeyListener((KeyListener) userInput);
             dynamicView.addKeyListener((KeyListener) userInput);
