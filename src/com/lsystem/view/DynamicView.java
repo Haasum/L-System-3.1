@@ -66,7 +66,7 @@ public class DynamicView extends JPanel {
      *
      *     this also contains a for-loop that gets the expanded string, and creates components accordingly.
      * </p>
-     * @param g
+     * @param g the basic graphics object
      */
     @Override
     public void paintComponent(Graphics g) {
@@ -129,7 +129,7 @@ public class DynamicView extends JPanel {
      *     The position will be added to an array, which can be used later on,
      *     when the pop() method is called.
      * </p>
-     * @param turtle
+     * @param turtle the graphics object which are used to draw the three
      */
     private void push(Graphics2D turtle) {
         turtlePositions.add(turtle.getTransform());
@@ -142,7 +142,7 @@ public class DynamicView extends JPanel {
      *     The turtles transform is then set to that previous position.
      *     The last turtle position is then removed from the array of turtle positions.
      * </p>
-     * @param turtle
+     * @param turtle the graphics object which are used to draw the three
      */
     private void pop(Graphics2D turtle) {
         AffineTransform tf = turtlePositions.get(turtlePositions.size() - 1);
@@ -157,7 +157,7 @@ public class DynamicView extends JPanel {
      *     from the root of the branch, to the end of the branch.
      *     This also calls the method that draws the leafs on the branch.
      * </p>
-     * @param turtle
+     * @param turtle the graphics object which are used to draw the three
      */
     private void growBranch(Graphics2D turtle) {
         turtle.setStroke(new BasicStroke(2.0f));
@@ -173,7 +173,7 @@ public class DynamicView extends JPanel {
      *     This contains a for-loop, which runs 4 times, and draws 1 leaf on each side of the branch,
      *     for every loop. The position of the leafs is moved a little for every loop.
      * </p>
-     * @param turtle
+     * @param turtle the graphics object which are used to draw the three
      */
     private void drawLeafs(Graphics2D turtle) {
 
@@ -187,7 +187,7 @@ public class DynamicView extends JPanel {
      * <p>
      *     This rotates the turtle to the left by 22,5 degrees (Math.PI/8)
      * </p>
-     * @param turtle
+     * @param turtle the graphics object which are used to draw the three
      */
     private void rotateLeft(Graphics2D turtle) {
         turtle.rotate(Math.PI / 8);
@@ -197,7 +197,7 @@ public class DynamicView extends JPanel {
      * <p>
      *     This rotates the turtle to the right by 22,5 degrees (Math.PI/8)
      * </p>
-     * @param turtle
+     * @param turtle the graphics object which are used to draw the three
      */
     private void rotateRight(Graphics2D turtle) {
         turtle.rotate(-Math.PI / 8);
@@ -208,7 +208,7 @@ public class DynamicView extends JPanel {
      *     The logshape is then filled and drawed. This is followed by the turtle position
      *     being moved from the bottom of the log to the top of the log.
      * </p>
-     * @param turtle
+     * @param turtle the graphics object which are used to draw the three
      */
     private void makeLog(Graphics2D turtle) {
         GeneralPath logShape = new GeneralPath();
@@ -231,7 +231,7 @@ public class DynamicView extends JPanel {
      *     This draws the background image, and set the scale corresponding to the screen width and height.
      *     The color of turtle is then declared as black, and the paint(texture) is then declared as the bark texture
      * </p>
-     * @param turtle
+     * @param turtle the graphics object which are used to draw the three
      */
     private void makeBackground(Graphics2D turtle) {
         g2d.drawImage(VisualComponents.background, 0, 0, screenWidth, screenHeight, this); //backgroundIMG. placed on position 0,0 - and scaled to fit screensize
@@ -247,10 +247,10 @@ public class DynamicView extends JPanel {
      *     Afterwords a nonTerminal object is initialized, and that new object is last
      *     put in an array of all the non-terminals.
      * </p>
-     * @param turtle
-     * @param g2d
-     * @param i
-     * @param c
+     * @param turtle the graphics object which are used to draw the three
+     * @param g2d the graphics object which are used to draw anything but the three
+     * @param i the location of the non Terminal, in the treeString
+     * @param c the character of the non Terminal
      */
     public void drawNonTerminal(Graphics2D turtle, Graphics2D g2d, int i, char c) {
         AffineTransform currentTf = turtle.getTransform();

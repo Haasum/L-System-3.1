@@ -58,7 +58,7 @@ public class NonTerminal {
      * <p>
      *     This is a getter for the bud.
      * </p>
-     * @return
+     * @return the bud of this instance of the object
      */
     public Ellipse2D getBud() {
         return bud;
@@ -70,7 +70,7 @@ public class NonTerminal {
      *     This is a getter for the affinetransform of the drawed bud.
      *     The affineTransform is to be used, when the bud is expanding.
      * </p>
-     * @return
+     * @return the transform of this instance of the object
      */
     public AffineTransform getAffineTransform() {
         return affineTransform;
@@ -82,7 +82,7 @@ public class NonTerminal {
      *     This is a setter for the affineTransform of the drawed bud.
      *     The affineTransform is a parameter from the class Dynamic view, where the Non-terminal (bud) was initialized.
      * </p>
-     * @param affineTransform
+     * @param affineTransform The transform properties of this instance of the object
      */
     public void setAffineTransform(AffineTransform affineTransform) {
         this.affineTransform = affineTransform;
@@ -90,7 +90,7 @@ public class NonTerminal {
 
     /**
      * Gets the non-terminals position in the treeString.
-     * @return
+     * @return the position of the non-terminal in the treeString
      */
     public int getI() {
         return i;
@@ -98,7 +98,7 @@ public class NonTerminal {
 
     /**
      * Gets the non-terminals character.
-     * @return
+     * @return the character (in the treeString) of the non-terminal
      */
     public char getC() {
         return c;

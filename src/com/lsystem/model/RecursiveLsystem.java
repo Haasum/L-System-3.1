@@ -21,6 +21,17 @@ public class RecursiveLsystem {
 
 
     }
+
+    /**
+     * Expands the current string.
+     * <p>
+     *     This expands the string, with the rules from the ruleset array.
+     *     //TODO: nået her til
+     * </p>
+     * @param s is the string to be expanded
+     * @param genNo is the number of times the string should be expanded
+     * @return the expanded string
+     */
     public String expand(String s, int genNo) {
         String next = "";
 //TODO i recsys: der skal være en metode, der stopper rekursionen: stopCondition()
