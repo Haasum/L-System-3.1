@@ -1,5 +1,6 @@
-package com.lsystem.model;
+package com.lsystem.test_package.com.lsystem.model;
 
+import com.lsystem.model.Rule;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,25 +8,18 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Lucas on 16-12-2016.
- */
+
 public class RuleTest {
-    @Before
-    public void setUp() throws Exception {
-
-    }
-
-    @After
-    public void tearDown() throws Exception {
-
-    }
 
     @Test
     public void getLeftSide() throws Exception {
-
+        //Given
         char a = 'A';
+
+        //When
         Rule ruleTest = new Rule (a);
+
+        //Then
         Assert.assertTrue(String.valueOf(ruleTest.getLeftSide() == a), true );
 
     }
