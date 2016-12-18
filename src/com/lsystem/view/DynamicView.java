@@ -1,7 +1,6 @@
 package com.lsystem.view;
 
 import com.lsystem.control.NonTerminalMouseListener;
-import com.lsystem.model.NonTerminalExpander;
 import com.lsystem.model.RecursiveLsystem;
 
 import javax.swing.*;
@@ -12,7 +11,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
-import static com.lsystem.view.VisualComponents.*;
+import static com.lsystem.view.VisualComponents.leafLeft;
+import static com.lsystem.view.VisualComponents.leafRight;
 
 public class DynamicView extends JPanel {
 
@@ -21,8 +21,8 @@ public class DynamicView extends JPanel {
     Graphics2D g2d;
     private ArrayList<NonTerminal> allNonTerminals;
     NonTerminal nonTerminal;
-    NonTerminalExpander nonTerminalExpander;
-    ArrayList<NonTerminal> nonTerminalsInPoint;
+    //NonTerminalExpander nonTerminalExpander;
+    //ArrayList<NonTerminal> nonTerminalsInPoint;
     NonTerminalMouseListener nonTerminalMouseListener;
 
     //TODO NAJA SKIFTER PLACErING PÅ Screen dimension
@@ -162,7 +162,7 @@ public class DynamicView extends JPanel {
 
 
 
-    public void changeLenght() {
+    public void changeLength() {
         addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
