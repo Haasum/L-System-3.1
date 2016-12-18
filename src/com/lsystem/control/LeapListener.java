@@ -2,14 +2,10 @@
 
 package com.lsystem.control;
 
-import com.leapmotion.leap.Controller;
 import com.leapmotion.leap.*;
+import com.leapmotion.leap.Controller;
 import com.leapmotion.leap.Frame;
 import com.lsystem.model.RecursiveLsystem;
-
-
-import static com.lsystem.view.DynamicView.screenHeight;
-import static com.lsystem.view.DynamicView.screenWidth;
 
 
 public class LeapListener extends Listener implements UserInput {
