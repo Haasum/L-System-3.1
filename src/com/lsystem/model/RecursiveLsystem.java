@@ -86,13 +86,13 @@ public class RecursiveLsystem {
         for (int i = 0; i < ruleset.size(); i++) {
             char currAlpha = ruleset.get(i).getLeftSide();
             if (currAlpha == c) {
-                s = ruleset.get(i).getRightSide();
+                s = ruleset.get(i).getRightSide(); //gets the expansion rule of the character
                 randomRules.add(s);
             }
         }
-        if (randomRules.size() > 1) {
-            RandomRulePicker randomRulePicker = new RandomRulePicker(randomRules);
-            s = randomRulePicker.getRandomRule();
+        if (randomRules.size() > 1) { //if the character has mre than one rule
+            RandomRulePicker randomRulePicker = new RandomRulePicker(randomRules); //initialize new RandomRulePicker
+            s = randomRulePicker.getRandomRule(); //gets the rule generated randomly by the randomRulePicker class
         }
         return s;
     }
