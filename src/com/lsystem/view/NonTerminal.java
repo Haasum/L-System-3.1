@@ -15,8 +15,20 @@ public class NonTerminal {
     private int i;
     private char c;
 
-    public NonTerminal(Graphics2D g2dd, AffineTransform turtleTransform, DynamicView dynamicView, int i, char c) {
-        this.g2dd = g2dd;
+    /***
+     * * Constructs the NonTerminal object
+     * <p>
+     *     This contains the methods that the non terminal object consist of
+     *     hereunder the methods that sets the screen position of the buds and a the method that draws the buds.
+     * </p>
+     * @param g2d the graphics object that the buds are to be drawn on
+     * @param turtleTransform the turtles affine transform, used for getting the screen position of the turtle
+     * @param dynamicView the current instance of the dynamicView class
+     * @param i the position of the current bud (the nonterminal character)
+     * @param c the nonterminal character
+     */
+    public NonTerminal(Graphics2D g2d, AffineTransform turtleTransform, DynamicView dynamicView, int i, char c) {
+        this.g2dd = g2d;
         this.setAffineTransform(turtleTransform);
         this.dynamicView = dynamicView;
         this.c = c;

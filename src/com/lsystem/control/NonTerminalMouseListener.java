@@ -16,7 +16,11 @@ public class NonTerminalMouseListener implements MouseListener{
     int mouseY;
     ArrayList<NonTerminal> allNonTerminals;
 
-
+    /**
+     * Constructs the NonTerminal MouseListener
+     * @param dynamicView the current instance of the dynamicView class
+     * @param lsystem the current instance of the RecursiveLsystem class
+     */
     public NonTerminalMouseListener(DynamicView dynamicView, RecursiveLsystem lsystem){
         this.dynamicView = dynamicView;
         this.lsystem = lsystem;

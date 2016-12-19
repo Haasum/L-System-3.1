@@ -25,17 +25,17 @@ public class DynamicView extends JPanel {
     ArrayList<NonTerminal> nonTerminalsInPoint;
     NonTerminalMouseListener nonTerminalMouseListener;
 
-    //TODO NAJA SKIFTER PLACErING PÅ Screen dimension
-    public static int screenHeight = (int) StaticView.SCREEN_SIZE.getHeight();
-    public static int screenWidth = (int) StaticView.SCREEN_SIZE.getWidth();
-    static int middleX = (screenWidth - StaticView.MENU_WIDTH) / 2;
-    AffineTransform firstTransform = AffineTransform.getTranslateInstance(middleX, screenHeight - 100);
+    static int middleX = (StaticView.SCREEN_WIDTH - StaticView.MENU_WIDTH) / 2;
+    AffineTransform firstTransform = AffineTransform.getTranslateInstance(middleX, StaticView.SCREEN_HEIGHT - 100);
 
     private final static int BRANCH_HEIGHT = -40;
 
     ArrayList<AffineTransform> turtlePositions = new ArrayList<AffineTransform>();
 
-
+    /**
+     * Constructs the Dynamic view object.
+     * @param lsystem the current instance of the recursive lsystem class
+     */
     public DynamicView(RecursiveLsystem lsystem) {
         super();
         this.lsystem = lsystem;
@@ -234,14 +234,14 @@ public class DynamicView extends JPanel {
      * @param turtle the graphics object which are used to draw the three
      */
     private void makeBackground(Graphics2D turtle) {
-        g2d.drawImage(VisualComponents.background, 0, 0, screenWidth, screenHeight, this); //backgroundIMG. placed on position 0,0 - and scaled to fit screensize
+        g2d.drawImage(VisualComponents.background, 0, 0, StaticView.SCREEN_WIDTH, StaticView.SCREEN_HEIGHT, this); //backgroundIMG. placed on position 0,0 - and scaled to fit screensize
         turtle.setColor(Color.BLACK);
         turtle.setPaint(VisualComponents.barkTex);
 
 
     }
     /**
-     * Draws the pink dots on the three.
+     * Draws the pink buds on the three.
      * <p>
      *     This gets the current current position and rotation of the turtle.
      *     Afterwords a nonTerminal object is initialized, and that new object is last

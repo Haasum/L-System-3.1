@@ -25,10 +25,20 @@ public class MenuPanel extends JPanel {
     StaticView staticView;
     JPanel dynamicView;
 
-    public MenuPanel(RecursiveLsystem lsys, JPanel dynamicView, StaticView staticView) { //the constructor
+    /**
+     * Constructs the MenuPanel object
+     * <p>
+     *     This contains the methods that the menu panel consist of,
+     *     hereunder the methods that creates the texture buttons and the input buttons
+     * </p>
+     * @param lsystem the current instance of the recursive lsystem class
+     * @param dynamicView the current instance of the dynamicView class
+     * @param staticView the current instance of the staticView class
+     */
+    public MenuPanel(RecursiveLsystem lsystem, JPanel dynamicView, StaticView staticView) { //the constructor
         this.staticView = staticView;
         this.dynamicView = dynamicView;
-        this.lsys = lsys;
+        this.lsys = lsystem;
         makeTextureButtons();
         makeInputButtons();
     }

@@ -14,11 +14,13 @@ public class ExpandKeyListener implements KeyListener, UserInput {
     int currentGenNo = 0;
     final static int MAX_GEN_NO = 10;
 
+    /**
+     * Constructs the Expandkeylistener
+     * @param lsystem the current instance of theRecursiveLsystem class
+     */
     public ExpandKeyListener(RecursiveLsystem lsystem) {
         this.lsystem = lsystem;
     }
-
-
     /**
      * Expands tree if key up is pressed.
      * <p>

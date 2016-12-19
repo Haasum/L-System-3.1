@@ -11,6 +11,10 @@ public class RecursiveLsystem {
     String treeString;
 
 
+    /**
+     * Constructs the RecursiveLsystem object.
+     * @param grammatik the current instance of the Grammatik class
+     */
     public RecursiveLsystem(Grammatik grammatik) {
 
         this.grammatik = grammatik;

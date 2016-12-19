@@ -16,6 +16,16 @@ public class VisualComponents {
     private BufferedImage barkImg;
     public static TexturePaint barkTex;
 
+    /***
+     * * Constructs the VisualComponents object
+     * <p>
+     *     This contains the methods that the visualComponents class consist of,
+     *     The method is runned, depending on the parameter shouldLoad:
+     *     If shouldLoad is true, the images should be loaded.
+     *     if shouldLoad is false, the images shouldnt be loaded.
+     * </p>
+     * @param shouldLoad boolean: should the images be loaded or = null (should the texture be on or off?)
+     */
     public VisualComponents(boolean shouldLoad) {
 
         if (shouldLoad ==  true) {

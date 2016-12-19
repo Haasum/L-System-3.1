@@ -2,6 +2,7 @@ package com.lsystem;
 
 //import com.leapmotion.leap.Gesture;
 //import com.lsystem.control.TextfileReader;
+//TODO: OBS! leap er slået fra - er det korrekt?
 
 import com.lsystem.model.Grammatik;
 import com.lsystem.model.RecursiveLsystem;
@@ -12,17 +13,20 @@ import java.io.IOException;
 
 public class Controller {
 
-    public Controller() throws IOException {//com.leapmotion.leap.Controller leapController)  throws IOException { //TODO: leapmotion: //IOException){//com.leapmotion.leap.Controller leapController) {
-
+    /**
+     * Constructs the controller object.
+     * <p>
+     *     This controls all the objects (classes) that are initialized in the initialization of the program.
+     * </p>
+     * @throws IOException
+     */
+    public Controller() throws IOException {
 
         TextfileReader textFileReader = new TextfileReader();
         String textFileString = textFileReader.getText();
         Grammatik grammatik = new Grammatik(textFileString);
         RecursiveLsystem lsystem = new RecursiveLsystem(grammatik);
-        System.out.println(lsystem.getTreeString());
         StaticView staticView = new StaticView(lsystem);
-
-
 
 
 //TODO: følgende er det der kalder leapListener. udkommenteret i denne version
@@ -40,14 +44,10 @@ public class Controller {
         // Remove the sample listener when done
         leapController.removeListener(listener);*/
 
-
-
     }
 
 
 }
-
-
 
 //        ExpandKeyListener expandKeyListener = new ExpandKeyListener(lsystem);
 //        staticView.addKeyListener(expandKeyListener);

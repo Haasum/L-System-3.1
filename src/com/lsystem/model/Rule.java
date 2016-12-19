@@ -5,11 +5,21 @@ public class Rule {
     private String rightSide;
     private boolean isTerminal = false;
 
+    /***
+     * Constructs the rule object
+     * @param leftSide
+     * @param rightSide
+     */
     public Rule(char leftSide, String rightSide){
         this.setLeftSide(leftSide);
         this.setRightSide(rightSide);
 
     }
+
+    /***
+     *  Constructs the rule object
+     * @param primitive a primitive - e.g. [ or +
+     */
     public Rule(char primitive){
         this.leftSide = primitive;
         setTerminal(true);

@@ -9,6 +9,17 @@ public class Grammatik {
     Rule rule;
     String textFileString;
 
+    /***
+     * * Constructs the Grammatik object
+     * <p>
+     *     This contains the methods that the grammatik class consist of.
+     *     First the ruleset array is instantiated.
+     *     Secondly the axiom is sat.
+     *     Then, the primitives (+,-,],[) is added to the ruleset.
+     *     Last, the Rules are added to the ruleset.
+     * </p>
+     * @param textFileString the string from the textfile, which contains information for generating the rules
+     */
     public Grammatik(String textFileString){
         this.textFileString = textFileString;
         ruleset = new ArrayList<Rule>();
@@ -16,6 +27,14 @@ public class Grammatik {
         addPrimitives();
         addRules();
     }
+
+    /**
+     * Sets the axiom.
+     * <p>
+     *     This gets the first character of the textFile, and sets it to be the axiom of the L-system
+     * </p>
+     * @return the axiom for this L-system
+     */
     public char addAxiom() {
         char axiom = textFileString.charAt(0);
         return axiom;

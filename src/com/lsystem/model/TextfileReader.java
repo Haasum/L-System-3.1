@@ -7,6 +7,13 @@ import java.io.IOException;
 
 public class TextfileReader {
 
+    /***
+     * Constructs the text file reader object
+     * <p>
+     *     Consist of the method getText, which gets and parse the text as a String
+     * </p>
+     * @throws IOException
+     */
     public TextfileReader() throws IOException {
         getText();
     }

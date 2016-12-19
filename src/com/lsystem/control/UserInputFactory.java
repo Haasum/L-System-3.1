@@ -11,6 +11,10 @@ public class UserInputFactory {
     StaticView staticView;
   //  public enum InputType {LEAPLISTENER, KEYLISTENER};
 
+    /***
+     * Constructs the UserInputFactory
+     * @param lsystem the current instance of the RecursiveLsystem Class
+     */
     public UserInputFactory(RecursiveLsystem lsystem) {
         this.lsystem = lsystem;
     }

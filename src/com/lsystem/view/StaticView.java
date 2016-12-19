@@ -7,14 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
 
-import static com.lsystem.view.DynamicView.screenHeight;
-import static com.lsystem.view.DynamicView.screenWidth;
-
-
-
 
 public class StaticView extends JFrame {
     final static Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+    final static int SCREEN_HEIGHT = (int) SCREEN_SIZE.getHeight();
+    final static int SCREEN_WIDTH = (int) SCREEN_SIZE.getWidth();
     JPanel dynamicView;
     MenuPanel menuPanel;
     RecursiveLsystem lsystem;
@@ -22,6 +19,14 @@ public class StaticView extends JFrame {
 
     final static int MENU_WIDTH = 150; //MENU_WIDTH is declared and assigned the final value 150
 
+    /**
+     * * Constructs the StaticView object
+     * <p>
+     *     This contains the methods that the staticView consist of,
+     *     hereunder the methods that creates the mainframe, the mainPanel and the menuPanel.
+     * </p>
+     * @param lsystem the current instance of the class RecursiveLsystem
+     */
     public StaticView(RecursiveLsystem lsystem){
         this.lsystem = lsystem;
         drawMainFrame();
@@ -41,7 +46,7 @@ public class StaticView extends JFrame {
     private void drawMainPanel() {
         dynamicView = new DynamicView(lsystem);
         dynamicView.setVisible(true);
-        dynamicView.setSize(screenWidth-MENU_WIDTH,screenHeight); //the size of the dynamicView panel is corresponding to the current screensize
+        dynamicView.setSize(SCREEN_WIDTH -MENU_WIDTH, SCREEN_HEIGHT); //the size of the dynamicView panel is corresponding to the current screensize
         dynamicView.setBackground(Color.WHITE);
         dynamicView.setLayout(null);
         dynamicView.setLocation(MENU_WIDTH,0);
@@ -75,7 +80,7 @@ public class StaticView extends JFrame {
 
         menuPanel = new MenuPanel(lsystem, dynamicView, this);
         menuPanel.setVisible(true);
-        menuPanel.setSize(MENU_WIDTH, screenHeight);
+        menuPanel.setSize(MENU_WIDTH, SCREEN_HEIGHT);
         menuPanel.setBackground(new Color(255,255,255));
         menuPanel.setLayout(null);
         menuPanel.setFocusable(true);
