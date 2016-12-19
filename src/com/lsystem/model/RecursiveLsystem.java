@@ -47,7 +47,7 @@ public class RecursiveLsystem {
      */
     public String expand(String s, int genNo) {
         String next = "";
-//TODO i recsys: der skal være en metode, der stopper rekursionen: stopCondition()
+
 
         if (genNo == 0) {
             return s;

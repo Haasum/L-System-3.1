@@ -1,4 +1,4 @@
-package com.lsystem.control;
+package com.lsystem.model;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -26,7 +26,7 @@ public class TextfileReader {
     public String getText() throws IOException {
         BufferedReader br;
         try {
-            br = new BufferedReader(new FileReader("src//textfile_package//txt5.txt")); //SETS WHICH TEXTFILE TO READ
+            br = new BufferedReader(new FileReader("src//textfile_package//txt.txt")); //SETS WHICH TEXTFILE TO READ
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) { //while loop that runs for each line in the textfile
