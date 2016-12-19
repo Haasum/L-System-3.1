@@ -34,8 +34,7 @@ public class LeapListener extends Listener implements UserInput {
     public LeapListener(Controller leapController, RecursiveLsystem lsys) {
         this.lsys = lsys;
         System.out.println("is called");
-        ;
-        slow();
+
     }
 
 
@@ -68,77 +67,8 @@ public class LeapListener extends Listener implements UserInput {
 
 
             }
-            slow();
-
-            if (!frame.fingers().isEmpty()) {
-
-                // Get fingers
-                FingerList fingers = frame.fingers();
-                fingers_count = frame.fingers().count();
-
-                if (DEBUG && fingers_count != prev_fingers_count) {
-                    System.out.println("Currently " + fingers_count + " fingers visible.\n");
-                    prev_fingers_count = fingers_count;
-                }
-
-
-                if (!fingers.isEmpty()) {
-                    // Calculate the hand's average finger tip position
-                    Vector avgPos = Vector.zero();
-                    for (Finger finger : fingers) {
-                        avgPos = avgPos.plus(finger.tipPosition());
-                    }
-                    avgPos = avgPos.divide(fingers.count());
-
-
-                    if (USE_CALIBRATED_SCREEN) {
-                        //New Pointing System using first calibrated screen. Thanks to wooster @ freenode IRC
-                        ScreenList screens = controller.locatedScreens();
-
-                        if (screens.isEmpty()) return;
-                        Screen s = screens.get(0);
-                        PointableList pointables = frame.hands().get(0).pointables();
-
-                        if (pointables.isEmpty()) return;
-                        Pointable firstPointable = pointables.get(0);
-                        Vector intersection = s.intersect(
-                                firstPointable,
-                                true, // normalize
-                                1.0f // clampRatio
-                        );
-                        // if the user is not pointing at the screen all components of
-                        // the returned vector will be Not A Number (NaN)
-                        // isValid() returns true only if all components are finite
-                        if (!intersection.isValid()) return;
-
-                        float x = s.widthPixels() * intersection.getX();
-                        // flip y coordinate to standard top-left origin
-                        float y = s.heightPixels() * (1.0f - intersection.getY());
-
-                        System.out.println("x pos is " + x + " & y pos is " + y);
-
-
-                    }
-                }
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-    }
-
-    // Slows down the frame rate
-    private void slow() {
-        try {
-            Thread.sleep(SLOW);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
-
 
     @Override
     public void expandGeneration(RecursiveLsystem lsystem) {

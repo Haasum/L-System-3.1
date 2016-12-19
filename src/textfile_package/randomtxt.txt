@@ -1,1 +1,1 @@
-A:F[+A][+A],A:F[-FA][-A],A:FF[++A],
+A:F[+A][+A],A:F[-FA][-A],A:FF[++A],++F+F+A,B:FF[++A],B:FF+F-F-F[FFFC][+C]-F-FC,C:FF-F+F+F[B][-B]+F+FB,A:FF-[A]++F+F,B:FF-[A]
