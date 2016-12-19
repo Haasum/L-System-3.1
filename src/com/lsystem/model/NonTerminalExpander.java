@@ -7,7 +7,7 @@ public class NonTerminalExpander {
 
     RecursiveLsystem lsystem;
     ArrayList<NonTerminal> nonTerminalsInPoint;
-
+    ArrayList<String> subStrings;
     public NonTerminalExpander(ArrayList<NonTerminal> nonTerminalsInPoint, RecursiveLsystem lsystem) {
         this.nonTerminalsInPoint = nonTerminalsInPoint;
         this.lsystem = lsystem;
@@ -16,7 +16,7 @@ public class NonTerminalExpander {
 
     private void checkArray() {
         String currentTreeString = lsystem.getTreeString();
-        ArrayList<String> subStrings = new ArrayList<String>();
+        subStrings = new ArrayList<String>();
         int j = 0;
 
         for (int i = 0; i < nonTerminalsInPoint.size(); i++) {
@@ -38,7 +38,12 @@ public class NonTerminalExpander {
                 subStrings.add(subString4);
             }
         }
+        combineSubTrees();
 
+
+    }
+
+    private void combineSubTrees() {
         String newTree = "";
         for (String s : subStrings) {
             newTree += s;
