@@ -23,6 +23,15 @@ public class NonTerminalMouseListener implements MouseListener{
         dynamicView.addMouseListener(this);
     }
 
+    /**
+     * Gets position of the mouse.
+     * <p>
+     *     This runs if the mouse is clicked.
+     *     If so, this gets the position of the mouse.
+     *     Last a method to fetch the non terminals ('buds') in the clicked area is called.
+     * </p>
+     * @param e the event. holds information, e.g. the position of the mouse when it was clicked
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -33,15 +42,23 @@ public class NonTerminalMouseListener implements MouseListener{
 
     }
 
+    /**
+     * Gets the non terminals ('buds') in the clicked area.
+     * <p>
+     *     This contains a foreach loop, that checks all the non terminals.
+     *     If a non terminal contains the mouse position, the non terminal is added
+     *     to an array of non terminals in point.
+     * </p>
+     */
     public void fetchNonTerminalInPoint() {
         ArrayList<NonTerminal> nonTerminalsInPoint = new ArrayList<NonTerminal>();
-        for (NonTerminal nt : allNonTerminals) {
-            if (nt.getBud().contains(mouseX, mouseY) == true) {
-                nonTerminalsInPoint.add(nt);
+        for (NonTerminal nt : allNonTerminals) { //foreach non terminal in the allNonTerminals arraylist
+            if (nt.getBud().contains(mouseX, mouseY) == true) { //if the 'bud' of the non terminal contains the mouse
+                nonTerminalsInPoint.add(nt); //the non terminal are added to an array
             }
         }
         if (nonTerminalsInPoint.isEmpty() == false) {
-            //        expandNonTerminals(nonTerminalsInPoint);
+            //        expandNonTerminals(nonTerminalsInPoint); //TODO: kan vi slette 100 p - har ikke set denne før nu 19-12
             NonTerminalExpander nonTerminalExpander = new NonTerminalExpander(nonTerminalsInPoint, lsystem);
         }
 
