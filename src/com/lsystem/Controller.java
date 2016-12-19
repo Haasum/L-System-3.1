@@ -1,7 +1,5 @@
 package com.lsystem;
 
-//import com.leapmotion.leap.Gesture;
-//import com.lsystem.control.TextfileReader;
 //TODO: OBS! leap er slået fra - er det korrekt?
 
 import com.leapmotion.leap.Gesture;
