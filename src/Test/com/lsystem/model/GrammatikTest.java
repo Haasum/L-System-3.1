@@ -1,13 +1,11 @@
-package com.lsystem.test_package.com.lsystem.model;
+package com.lsystem.model;
 
 import com.lsystem.model.Grammatik;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Haasum on 12/18/2016.
- */
+
 public class GrammatikTest {
     @Test
     public void addAxiom() throws Exception {
