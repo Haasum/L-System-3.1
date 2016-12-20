@@ -15,7 +15,7 @@ public class LeapListener extends Listener implements UserInput {
     boolean USE_CALIBRATED_SCREEN = true;
 
     //Just to control the speed, it can be changed accordingly to needs
-    int SLOW = 40;
+    int SLOW = 150;
 
     float cur_x = 0, cur_y = 0;
     int fingers_count = 0;
@@ -43,7 +43,8 @@ public class LeapListener extends Listener implements UserInput {
      *     which state that very same thing
      * </p>
      * @param leapController the controller for the leap motion sensor
-     */
+     * */
+
     public void onConnect(Controller leapController) {
         System.out.println("LeapMotion is Connected");
         isConnected = true;
@@ -56,7 +57,8 @@ public class LeapListener extends Listener implements UserInput {
      *     which state that very same thing
      * </p>
      * @param leapController the controller for the leap motion sensor
-     */
+     * */
+
     public void onDisconnect(Controller leapController) {
         System.out.println("LeapMotion is Disconnected");
         isConnected = false;
@@ -69,7 +71,8 @@ public class LeapListener extends Listener implements UserInput {
      *     which state that very same thing
      * </p>
      * @param leapController the controller for the leap motion sensor
-     */
+     * */
+
     public void onExit(Controller leapController) {
         System.out.println("Exited");
         System.exit(0);
@@ -82,7 +85,8 @@ public class LeapListener extends Listener implements UserInput {
      *     If there are any gestures, the method will check if any of the gestures was a Swipe (a specific hand movement).
      *     If so, a method to expand the tree one generation is called.
      * </p>
-     */
+     * */
+
     public void onFrame(Controller leapController) {
         // Get the most recent frame and report some basic information
         Frame frame = leapController.frame();
@@ -92,13 +96,20 @@ public class LeapListener extends Listener implements UserInput {
         for (int i = 0; i < numGestures; i++) { //for loop that runs for every gesture in the frame
             if (frame.gestures().get(i).type() == Gesture.Type.TYPE_SWIPE) {  //check if the gesture was a'swipe'
                 expandGeneration(lsys); //if so, the method to expand the tree is called
+                slow();
 
 
             }
         }
+    }    private void slow() {
+        try {
+            Thread.sleep(SLOW);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    /**
+    /*
      * Expands the tree one generation.
      * <p>
      *     This expands the three by one generation.
@@ -106,7 +117,8 @@ public class LeapListener extends Listener implements UserInput {
      *     If not, the current tree string will be fetched and expanded, and thereby the new tree String is sat
      * </p>
      * @param lsystem an instance of the class RecursiveLsystem
-     */
+     * */
+
     @Override
     public void expandGeneration(RecursiveLsystem lsystem) {
         System.out.println("tree is now expanding");
@@ -117,4 +129,3 @@ public class LeapListener extends Listener implements UserInput {
 
     }
 }
-
