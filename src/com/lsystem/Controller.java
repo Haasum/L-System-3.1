@@ -2,7 +2,6 @@ package com.lsystem;
 
 //TODO: OBS! leap er slået fra - er det korrekt?
 
-import com.leapmotion.leap.Gesture;
 import com.lsystem.model.Grammatik;
 import com.lsystem.model.RecursiveLsystem;
 import com.lsystem.model.TextfileReader;
@@ -19,7 +18,7 @@ public class Controller {
      * </p>
      * @throws IOException
      */
-    public Controller(com.leapmotion.leap.Controller leapController) throws IOException {
+    public Controller() throws IOException {
 
         TextfileReader textFileReader = new TextfileReader();
         String textFileString = textFileReader.getText();
@@ -28,7 +27,11 @@ public class Controller {
         StaticView staticView = new StaticView(lsystem);
 
 
-//TODO: følgende er det der kalder leapListener. udkommenteret i denne version
+/*
+
+This part of the code, is not included in this version of the program.
+This is because Leap Motion doesnt work, unless you have the correct library installed on your computer.
+
         com.lsystem.control.LeapListener listener = new com.lsystem.control.LeapListener(leapController, lsystem);
         leapController.enableGesture(Gesture.Type.TYPE_SWIPE);//  controller.enableGesture( Gesture.Type.TYPE_CIRCLE );
         leapController.addListener(listener);
@@ -40,9 +43,10 @@ public class Controller {
             e.printStackTrace();
         }
 
-        // Remove the sample listener when done
+
         leapController.removeListener(listener);
 
+*/
     }
 
 

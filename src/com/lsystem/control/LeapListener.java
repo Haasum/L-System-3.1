@@ -1,4 +1,6 @@
-
+/*
+This part of the code, is not included in this version of the program.
+This is because Leap Motion doesnt work, unless you have the correct library installed on your computer.
 
 package com.lsystem.control;
 
@@ -10,41 +12,41 @@ import com.lsystem.model.RecursiveLsystem;
 
 public class LeapListener extends Listener implements UserInput {
 
-    //True for Debugging
-    boolean DEBUG = true;
-    boolean USE_CALIBRATED_SCREEN = true;
+   //True for Debugging
+   boolean DEBUG = true;
+   boolean USE_CALIBRATED_SCREEN = true;
 
-    //Just to control the speed, it can be changed accordingly to needs
-    int SLOW = 150;
+   //Just to control the speed, it can be changed accordingly to needs
+   int SLOW = 150;
 
-    float cur_x = 0, cur_y = 0;
-    int fingers_count = 0;
-    int prev_fingers_count = 0;
+   float cur_x = 0, cur_y = 0;
+   int fingers_count = 0;
+   int prev_fingers_count = 0;
 
-    private float x;
-    private float y;
-    boolean isConnected;
+   private float x;
+   private float y;
+   boolean isConnected;
 
-    RecursiveLsystem lsys;
-    String treeToExpand;
-    String expandedTree;
+   RecursiveLsystem lsys;
+   String treeToExpand;
+   String expandedTree;
 
 
-    public LeapListener(Controller leapController, RecursiveLsystem lsys) {
-        this.lsys = lsys;
-        System.out.println("is called");
+   public LeapListener(Controller leapController, RecursiveLsystem lsys) {
+       this.lsys = lsys;
+       System.out.println("is called");
 
-    }
+   }
 
-    /**
-     * Lets the user know that the leap Motion sensor is connected.
-     * <p>
-     *     this runs when the leap motion sensor is connected, and prints out a system print,
-     *     which state that very same thing
-     * </p>
-     * @param leapController the controller for the leap motion sensor
-     * */
-
+   /**
+    * Lets the user know that the leap Motion sensor is connected.
+    * <p>
+    *     this runs when the leap motion sensor is connected, and prints out a system print,
+    *     which state that very same thing
+    * </p>
+    * @param leapController the controller for the leap motion sensor
+    * */
+/*
     public void onConnect(Controller leapController) {
         System.out.println("LeapMotion is Connected");
         isConnected = true;
@@ -58,7 +60,7 @@ public class LeapListener extends Listener implements UserInput {
      * </p>
      * @param leapController the controller for the leap motion sensor
      * */
-
+/*
     public void onDisconnect(Controller leapController) {
         System.out.println("LeapMotion is Disconnected");
         isConnected = false;
@@ -72,7 +74,7 @@ public class LeapListener extends Listener implements UserInput {
      * </p>
      * @param leapController the controller for the leap motion sensor
      * */
-
+/*
     public void onExit(Controller leapController) {
         System.out.println("Exited");
         System.exit(0);
@@ -86,7 +88,7 @@ public class LeapListener extends Listener implements UserInput {
      *     If so, a method to expand the tree one generation is called.
      * </p>
      * */
-
+/*
     public void onFrame(Controller leapController) {
         // Get the most recent frame and report some basic information
         Frame frame = leapController.frame();
@@ -109,7 +111,7 @@ public class LeapListener extends Listener implements UserInput {
         }
     }
 
-    /*
+    /**
      * Expands the tree one generation.
      * <p>
      *     This expands the three by one generation.
@@ -118,14 +120,15 @@ public class LeapListener extends Listener implements UserInput {
      * </p>
      * @param lsystem an instance of the class RecursiveLsystem
      * */
-
+/*
     @Override
     public void expandGeneration(RecursiveLsystem lsystem) {
         System.out.println("tree is now expanding");
-        //TODO: her tilføjes expand agtig metode
         treeToExpand = lsystem.getTreeString();
         expandedTree = lsystem.expand(treeToExpand, 1);
         lsystem.setTreeString(expandedTree);
 
     }
 }
+
+*/
