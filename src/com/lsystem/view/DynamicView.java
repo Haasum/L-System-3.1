@@ -1,7 +1,6 @@
 package com.lsystem.view;
 
 import com.lsystem.control.NonTerminalMouseListener;
-import com.lsystem.model.NonTerminalExpander;
 import com.lsystem.model.RecursiveLsystem;
 
 import javax.swing.*;
@@ -12,7 +11,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
-import static com.lsystem.view.VisualComponents.*;
+import static com.lsystem.view.VisualComponents.leafLeft;
+import static com.lsystem.view.VisualComponents.leafRight;
 
 public class DynamicView extends JPanel {
 
@@ -21,8 +21,6 @@ public class DynamicView extends JPanel {
     Graphics2D g2d;
     private ArrayList<NonTerminal> allNonTerminals;
     NonTerminal nonTerminal;
-    NonTerminalExpander nonTerminalExpander;
-    ArrayList<NonTerminal> nonTerminalsInPoint;
     NonTerminalMouseListener nonTerminalMouseListener;
 
     static int middleX = (StaticView.SCREEN_WIDTH - StaticView.MENU_WIDTH) / 2;
@@ -189,7 +187,7 @@ public class DynamicView extends JPanel {
      * </p>
      * @param turtle the graphics object which are used to draw the three
      */
-    private void rotateLeft(Graphics2D turtle) {
+    private void rotateRight(Graphics2D turtle) {
         turtle.rotate(Math.PI / 8);
     }
     /**
@@ -199,7 +197,7 @@ public class DynamicView extends JPanel {
      * </p>
      * @param turtle the graphics object which are used to draw the three
      */
-    private void rotateRight(Graphics2D turtle) {
+    private void rotateLeft(Graphics2D turtle) {
         turtle.rotate(-Math.PI / 8);
     }
     /** Draws the log shape.
